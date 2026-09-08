@@ -1,0 +1,6 @@
+{
+  "name": "Chess Online Game",
+  "description": "Play online chess with 3D board & pieces, live matchmaking, friend requests, game history move reviews, realistic avatars, and leaderboards.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
