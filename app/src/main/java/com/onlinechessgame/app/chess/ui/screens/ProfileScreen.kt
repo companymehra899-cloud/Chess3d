@@ -210,12 +210,12 @@ fun ProfileScreen(
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text("★", color = Color(0xFF0F172A), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                                Text("★", color = Color(0xFF0F172A), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                                 Spacer(modifier = Modifier.width(3.dp))
                                 Text(
                                     text = "Lv. ${profile?.level ?: 15}",
                                     color = Color(0xFF0F172A),
-                                    fontSize = 10.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = FontWeight.Black
                                 )
                             }
@@ -266,8 +266,8 @@ fun ProfileScreen(
                             modifier = Modifier.fillMaxWidth(),
                             horizontalArrangement = Arrangement.SpaceBetween
                         ) {
-                            Text("EXPERIENCE", color = Color(0xFF94A3B8), fontSize = 10.sp, fontWeight = FontWeight.Bold)
-                            Text("$currentXp / $maxXp XP", color = Color(0xFFFDE68A), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text("EXPERIENCE", color = Color(0xFF94A3B8), fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                            Text("$currentXp / $maxXp XP", color = Color(0xFFFDE68A), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                         }
                         Spacer(modifier = Modifier.height(4.dp))
                         Box(
@@ -315,7 +315,7 @@ fun ProfileScreen(
                                 Text(
                                     text = profile?.countryName ?: "United States",
                                     color = Color(0xFFE2E8F0),
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = FontWeight.Medium
                                 )
                             }
@@ -338,7 +338,7 @@ fun ProfileScreen(
                                 Text(
                                     text = "Avatars",
                                     color = Color(0xFF38BDF8),
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = FontWeight.Bold
                                 )
                             }
@@ -357,7 +357,7 @@ fun ProfileScreen(
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("GEMS", color = Color(0xFF94A3B8), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text("GEMS", color = Color(0xFF94A3B8), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.height(2.dp))
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text("💎", fontSize = 14.sp)
@@ -379,7 +379,7 @@ fun ProfileScreen(
                         )
 
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("TOKENS", color = Color(0xFF94A3B8), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text("TOKENS", color = Color(0xFF94A3B8), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.height(2.dp))
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Text("🪙", fontSize = 14.sp)
@@ -401,7 +401,7 @@ fun ProfileScreen(
                         )
 
                         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                            Text("RATING", color = Color(0xFF94A3B8), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                            Text("RATING", color = Color(0xFF94A3B8), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                             Spacer(modifier = Modifier.height(2.dp))
                             Row(verticalAlignment = Alignment.CenterVertically) {
                                 Icon(Icons.Default.Star, contentDescription = null, tint = Color(0xFF38BDF8), modifier = Modifier.size(15.dp))
@@ -480,7 +480,7 @@ fun ProfileScreen(
                                     text = currentPieceColor.title,
                                     color = Color(0xFF38BDF8),
                                     fontWeight = FontWeight.SemiBold,
-                                    fontSize = 12.sp
+                                    fontSize = 14.sp
                                 )
                             }
                         }
@@ -536,7 +536,7 @@ fun ProfileScreen(
                                     text = currentPieceStyle.title,
                                     color = Color(0xFF38BDF8),
                                     fontWeight = FontWeight.SemiBold,
-                                    fontSize = 12.sp
+                                    fontSize = 14.sp
                                 )
                             }
                         }
@@ -593,7 +593,7 @@ fun ProfileScreen(
                                     text = currentBoardTheme.title,
                                     color = Color(0xFF38BDF8),
                                     fontWeight = FontWeight.SemiBold,
-                                    fontSize = 12.sp
+                                    fontSize = 14.sp
                                 )
                             }
                         }
@@ -668,7 +668,7 @@ fun ProfileScreen(
                                 Text(
                                     text = "Move, capture & checkmate sounds",
                                     color = Color(0xFF94A3B8),
-                                    fontSize = 11.sp
+                                    fontSize = 13.sp
                                 )
                             }
                         }
@@ -715,7 +715,7 @@ fun ProfileScreen(
                                 Text(
                                     text = "Tactile feedback on piece drops",
                                     color = Color(0xFF94A3B8),
-                                    fontSize = 11.sp
+                                    fontSize = 13.sp
                                 )
                             }
                         }
@@ -762,7 +762,7 @@ fun ProfileScreen(
                                 Text(
                                     text = "Instantly promote 8th-rank pawns",
                                     color = Color(0xFF94A3B8),
-                                    fontSize = 11.sp
+                                    fontSize = 13.sp
                                 )
                             }
                         }
@@ -845,7 +845,7 @@ fun ProfileScreen(
                                     Text(
                                         text = "Learn piece moves, castling, en passant & tactics",
                                         color = Color(0xFFCBD5E1),
-                                        fontSize = 11.sp,
+                                        fontSize = 13.sp,
                                         maxLines = 1
                                     )
                                 }
@@ -893,7 +893,7 @@ fun ProfileScreen(
                                     Text(
                                         text = "Offline local encryption, zero tracking & guest safety",
                                         color = Color(0xFFCBD5E1),
-                                        fontSize = 11.sp,
+                                        fontSize = 13.sp,
                                         maxLines = 1
                                     )
                                 }
@@ -942,12 +942,12 @@ fun ProfileScreen(
                                     Text(
                                         text = if (isGuest) "Tap to Sign Up or Log In to your account" else "Tap to Switch User or Log Out",
                                         color = Color(0xFF94A3B8),
-                                        fontSize = 11.sp,
+                                        fontSize = 13.sp,
                                         maxLines = 1
                                     )
                                 }
                             }
-                            Text(if (isGuest) "Sign In ➔" else "Log Out ➔", color = if (isGuest) Color(0xFF38BDF8) else Color(0xFFFBBF24), fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                            Text(if (isGuest) "Sign In ➔" else "Log Out ➔", color = if (isGuest) Color(0xFF38BDF8) else Color(0xFFFBBF24), fontWeight = FontWeight.Bold, fontSize = 14.sp)
                         }
                     }
 
@@ -962,7 +962,7 @@ fun ProfileScreen(
                         Text(
                             text = "Grandmaster 3D Chess • v2.4.0 • Local Room DB",
                             color = Color(0xFF64748B),
-                            fontSize = 11.sp
+                            fontSize = 13.sp
                         )
                     }
                 }
@@ -1009,7 +1009,7 @@ fun ProfileScreen(
                                 Text(
                                     text = "Earn +500 Tokens per invited friend",
                                     color = Color(0xFF94A3B8),
-                                    fontSize = 11.sp
+                                    fontSize = 13.sp
                                 )
                             }
                         }
@@ -1023,7 +1023,7 @@ fun ProfileScreen(
                                 text = "$referralCount Invited",
                                 color = Color(0xFF34D399),
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 11.sp,
+                                fontSize = 13.sp,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
                             )
                         }
@@ -1047,7 +1047,7 @@ fun ProfileScreen(
                                 Text(
                                     text = "YOUR CODE",
                                     color = Color(0xFF64748B),
-                                    fontSize = 9.sp,
+                                    fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold,
                                     letterSpacing = 0.5.sp
                                 )
@@ -1082,7 +1082,7 @@ fun ProfileScreen(
                                         modifier = Modifier.size(13.dp)
                                     )
                                     Spacer(modifier = Modifier.width(4.dp))
-                                    Text("Copy", color = Color(0xFF38BDF8), fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                    Text("Copy", color = Color(0xFF38BDF8), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                                 }
 
                                 Button(
@@ -1110,7 +1110,7 @@ fun ProfileScreen(
                                         modifier = Modifier.size(13.dp)
                                     )
                                     Spacer(modifier = Modifier.width(4.dp))
-                                    Text("Share", color = Color.White, fontSize = 11.sp, fontWeight = FontWeight.Bold)
+                                    Text("Share", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
                                 }
                             }
                         }
@@ -1133,7 +1133,7 @@ fun ProfileScreen(
                             Text(
                                 text = "Referral bonus claimed (+250 Tokens)",
                                 color = Color(0xFF34D399),
-                                fontSize = 11.5.sp,
+                                fontSize = 13.sp,
                                 fontWeight = FontWeight.Medium
                             )
                         }
@@ -1163,7 +1163,7 @@ fun ProfileScreen(
                                     Text(
                                         text = "Have a Friend's Code? Redeem here",
                                         color = Color(0xFFFDE68A),
-                                        fontSize = 11.5.sp,
+                                        fontSize = 13.sp,
                                         fontWeight = FontWeight.Medium
                                     )
                                 }
@@ -1176,9 +1176,9 @@ fun ProfileScreen(
                                 OutlinedTextField(
                                     value = inputFriendCode,
                                     onValueChange = { inputFriendCode = it.uppercase() },
-                                    placeholder = { Text("CHESS-XXXX-XXX", color = Color(0xFF64748B), fontSize = 11.sp) },
+                                    placeholder = { Text("CHESS-XXXX-XXX", color = Color(0xFF64748B), fontSize = 13.sp) },
                                     singleLine = true,
-                                    textStyle = TextStyle(color = Color.White, fontSize = 12.sp, fontFamily = FontFamily.Monospace),
+                                    textStyle = TextStyle(color = Color.White, fontSize = 14.sp, fontFamily = FontFamily.Monospace),
                                     modifier = Modifier
                                         .weight(1f)
                                         .height(48.dp)
@@ -1213,7 +1213,7 @@ fun ProfileScreen(
                                         .height(44.dp)
                                         .testTag("profile_submit_referral_code_button")
                                 ) {
-                                    Text("Claim", color = Color.White, fontSize = 11.5.sp, fontWeight = FontWeight.Bold)
+                                    Text("Claim", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Bold)
                                 }
                             }
                         }
@@ -1238,7 +1238,7 @@ fun ProfileScreen(
                                 Text(
                                     text = msg,
                                     color = if (isSuccess) Color(0xFFA7F3D0) else Color(0xFFFECDD3),
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     modifier = Modifier.weight(1f)
                                 )
                                 IconButton(
@@ -1331,7 +1331,7 @@ fun ProfileScreen(
                         Text(
                             text = "${DEFAULT_COUNTRIES.size} Countries",
                             color = Color(0xFF38BDF8),
-                            fontSize = 11.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                         )
@@ -1343,7 +1343,7 @@ fun ProfileScreen(
                     OutlinedTextField(
                         value = countrySearchQuery,
                         onValueChange = { countrySearchQuery = it },
-                        placeholder = { Text("Search country (e.g. India, USA, UK)...", fontSize = 12.sp, color = Color(0xFF64748B)) },
+                        placeholder = { Text("Search country (e.g. India, USA, UK)...", fontSize = 14.sp, color = Color(0xFF64748B)) },
                         leadingIcon = { Text("🔍", fontSize = 14.sp) },
                         trailingIcon = {
                             if (countrySearchQuery.isNotEmpty()) {
@@ -1404,7 +1404,7 @@ fun ProfileScreen(
                                             Text(
                                                 text = country.code,
                                                 color = Color(0xFF64748B),
-                                                fontSize = 10.sp
+                                                fontSize = 13.sp
                                             )
                                         }
                                     }
@@ -1530,7 +1530,7 @@ fun ChessRulesModalDialog(onDismiss: () -> Unit) {
                             Text(
                                 text = "Complete Official Rules & Master Guide",
                                 color = Color(0xFF38BDF8),
-                                fontSize = 11.sp
+                                fontSize = 13.sp
                             )
                         }
                     }
@@ -1562,7 +1562,7 @@ fun ChessRulesModalDialog(onDismiss: () -> Unit) {
                             text = {
                                 Text(
                                     text = title,
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = if (selectedTab == index) FontWeight.Bold else FontWeight.Normal
                                 )
                             }
@@ -1775,7 +1775,7 @@ fun ChessPrivacyModalDialog(onDismiss: () -> Unit) {
                             Text(
                                 text = "Your data safety & gameplay integrity",
                                 color = Color(0xFF34D399),
-                                fontSize = 11.sp
+                                fontSize = 13.sp
                             )
                         }
                     }
@@ -1875,7 +1875,7 @@ private fun RuleInfoCard(
             Text(
                 text = description,
                 color = Color(0xFFCBD5E1),
-                fontSize = 11.sp,
+                fontSize = 13.sp,
                 lineHeight = 16.sp
             )
         }
@@ -1981,7 +1981,7 @@ fun ChessPieceColorModalDialog(
                                         Text(
                                             text = theme.subtitle,
                                             color = Color(0xFF94A3B8),
-                                            fontSize = 11.sp
+                                            fontSize = 13.sp
                                         )
                                     }
                                 }
@@ -1994,7 +1994,7 @@ fun ChessPieceColorModalDialog(
                                         Text(
                                             text = "EQUIPPED",
                                             color = Color.White,
-                                            fontSize = 10.sp,
+                                            fontSize = 13.sp,
                                             fontWeight = FontWeight.Bold,
                                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                                         )
@@ -2103,7 +2103,7 @@ fun ChessPiecesStyleModalDialog(
                                             Text(
                                                 text = style.badge,
                                                 color = if (isSelected) Color(0xFF7DD3FC) else Color(0xFF94A3B8),
-                                                fontSize = 9.sp,
+                                                fontSize = 14.sp,
                                                 fontWeight = FontWeight.Bold,
                                                 modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                                             )
@@ -2113,7 +2113,7 @@ fun ChessPiecesStyleModalDialog(
                                     Text(
                                         text = style.description,
                                         color = Color(0xFF94A3B8),
-                                        fontSize = 11.sp,
+                                        fontSize = 13.sp,
                                         lineHeight = 14.sp
                                     )
                                 }
@@ -2289,7 +2289,7 @@ fun ChessBoardThemeModalDialog(
                                         Text(
                                             text = theme.subtitle,
                                             color = Color(0xFF94A3B8),
-                                            fontSize = 11.sp
+                                            fontSize = 13.sp
                                         )
                                     }
                                 }

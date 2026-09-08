@@ -20,6 +20,7 @@ import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -148,6 +149,8 @@ fun AuthScreen(
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
+                .widthIn(max = 560.dp)
+                .align(Alignment.TopCenter)
                 .padding(horizontal = 20.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -168,9 +171,9 @@ fun AuthScreen(
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp),
                             verticalAlignment = Alignment.CenterVertically
                         ) {
-                            Text("Skip / Guest", fontSize = 11.sp, color = Color(0xFF38BDF8), fontWeight = FontWeight.SemiBold)
+                            Text("Skip / Guest", fontSize = 13.sp, color = Color(0xFF38BDF8), fontWeight = FontWeight.SemiBold)
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("➔", fontSize = 11.sp, color = Color(0xFF38BDF8))
+                            Text("➔", fontSize = 13.sp, color = Color(0xFF38BDF8))
                         }
                     }
                 }
@@ -208,7 +211,7 @@ fun AuthScreen(
                 )
                 Text(
                     text = "Compete, Solve Puzzles & Climb Leaderboards",
-                    fontSize = 12.sp,
+                    fontSize = 14.sp,
                     color = Color(0xFF94A3B8),
                     modifier = Modifier.padding(top = 4.dp)
                 )
@@ -318,7 +321,7 @@ fun AuthScreen(
                             Text(
                                 text = authError ?: "",
                                 color = Color(0xFFFCA5A5),
-                                fontSize = 12.sp,
+                                fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium
                             )
                         }
@@ -352,7 +355,7 @@ fun AuthScreen(
                             Text(
                                 text = authSuccess ?: "",
                                 color = Color(0xFF6EE7B7),
-                                fontSize = 12.sp,
+                                fontSize = 14.sp,
                                 fontWeight = FontWeight.Medium
                             )
                         }
@@ -387,7 +390,7 @@ fun AuthScreen(
                                 )
                                 Text(
                                     text = "Enter your username and password to access your saved progress.",
-                                    fontSize = 12.sp,
+                                    fontSize = 14.sp,
                                     color = Color(0xFF94A3B8),
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier.padding(top = 4.dp, bottom = 18.dp)
@@ -513,12 +516,12 @@ fun AuthScreen(
                                 ) {
                                     Text(
                                         text = "Don't have an account? ",
-                                        fontSize = 12.sp,
+                                        fontSize = 14.sp,
                                         color = Color(0xFF94A3B8)
                                     )
                                     Text(
                                         text = "Sign Up",
-                                        fontSize = 12.sp,
+                                        fontSize = 14.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = Color(0xFF38BDF8),
                                         modifier = Modifier.clickable {
@@ -557,7 +560,7 @@ fun AuthScreen(
                                 )
                                 Text(
                                     text = "No email or verification required! Get 1000 🪙 + 650 💎 immediately.",
-                                    fontSize = 12.sp,
+                                    fontSize = 14.sp,
                                     color = Color(0xFF94A3B8),
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier.padding(top = 4.dp, bottom = 16.dp)
@@ -657,7 +660,7 @@ fun AuthScreen(
                                         Column {
                                             Text(
                                                 text = "Country",
-                                                fontSize = 10.sp,
+                                                fontSize = 13.sp,
                                                 color = Color(0xFF94A3B8)
                                             )
                                             Text(
@@ -671,7 +674,7 @@ fun AuthScreen(
                                     Text(
                                         text = if (showCountryPicker) "▲" else "▼",
                                         color = Color(0xFF38BDF8),
-                                        fontSize = 12.sp
+                                        fontSize = 14.sp
                                     )
                                 }
 
@@ -704,7 +707,7 @@ fun AuthScreen(
                                                     Spacer(modifier = Modifier.width(8.dp))
                                                     Text(
                                                         text = c.name,
-                                                        fontSize = 12.sp,
+                                                        fontSize = 14.sp,
                                                         color = Color.White,
                                                         fontWeight = if (selectedCountry.code == c.code) FontWeight.Bold else FontWeight.Normal
                                                     )
@@ -720,7 +723,7 @@ fun AuthScreen(
                                 Column(modifier = Modifier.fillMaxWidth()) {
                                     Text(
                                         text = "CHOOSE STARTER AVATAR",
-                                        fontSize = 11.sp,
+                                        fontSize = 13.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = Color(0xFF94A3B8)
                                     )
@@ -756,7 +759,7 @@ fun AuthScreen(
                                                 Spacer(modifier = Modifier.height(4.dp))
                                                 Text(
                                                     text = avatar.name,
-                                                    fontSize = 10.sp,
+                                                    fontSize = 13.sp,
                                                     color = if (isSelected) Color(0xFFFDE68A) else Color(0xFF94A3B8),
                                                     fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
                                                 )
@@ -812,12 +815,12 @@ fun AuthScreen(
                                 ) {
                                     Text(
                                         text = "Already have an account? ",
-                                        fontSize = 12.sp,
+                                        fontSize = 14.sp,
                                         color = Color(0xFF94A3B8)
                                     )
                                     Text(
                                         text = "Log In",
-                                        fontSize = 12.sp,
+                                        fontSize = 14.sp,
                                         fontWeight = FontWeight.Bold,
                                         color = Color(0xFF38BDF8),
                                         modifier = Modifier.clickable {
@@ -875,7 +878,7 @@ fun AuthScreen(
 
                                 Text(
                                     text = "Jump straight into chess battles without any password or registration required.",
-                                    fontSize = 12.sp,
+                                    fontSize = 14.sp,
                                     color = Color(0xFF94A3B8),
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier.padding(top = 4.dp, bottom = 18.dp)
@@ -952,7 +955,7 @@ private fun GuestFeatureRow(icon: String, text: String) {
         Spacer(modifier = Modifier.width(10.dp))
         Text(
             text = text,
-            fontSize = 12.sp,
+            fontSize = 14.sp,
             color = Color(0xFFE2E8F0),
             fontWeight = FontWeight.Medium
         )

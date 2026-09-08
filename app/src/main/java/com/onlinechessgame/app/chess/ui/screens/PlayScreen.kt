@@ -26,6 +26,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
@@ -82,6 +85,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.onlinechessgame.app.chess.data.local.UserProfileEntity
@@ -114,7 +118,8 @@ fun PlayScreen(
     Box(
         modifier = modifier
             .fillMaxSize()
-            .background(Color(0xFF0B0F17))
+            .background(Color(0xFF0B0F17)),
+        contentAlignment = Alignment.TopCenter
     ) {
         when (matchState) {
             MatchmakingState.IDLE -> {
@@ -162,6 +167,8 @@ private fun PlayLobbyView(
 
     LazyColumn(
         modifier = Modifier
+            .fillMaxWidth()
+            .widthIn(max = 720.dp)
             .fillMaxSize()
             .padding(horizontal = 16.dp),
         verticalArrangement = Arrangement.spacedBy(16.dp)
@@ -197,7 +204,7 @@ private fun PlayLobbyView(
                         Text(
                             text = "1,420 PLAYERS ONLINE",
                             color = Color(0xFF34D399),
-                            fontSize = 10.5.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
                             letterSpacing = 0.4.sp
                         )
@@ -279,7 +286,9 @@ private fun PlayLobbyView(
                                     text = profile?.username ?: "Guest Player",
                                     color = Color.White,
                                     fontWeight = FontWeight.ExtraBold,
-                                    fontSize = 16.sp
+                                    fontSize = 16.sp,
+                                    maxLines = 1,
+                                    overflow = TextOverflow.Ellipsis
                                 )
                                 Spacer(modifier = Modifier.width(6.dp))
                                 Text(text = profile?.countryFlag ?: "🇺🇸", fontSize = 15.sp)
@@ -384,7 +393,7 @@ private fun PlayLobbyView(
                                     Text(
                                         text = "Live opponents • 3D Chess Board",
                                         color = Color(0xFF94A3B8),
-                                        fontSize = 12.sp
+                                        fontSize = 14.sp
                                     )
                                 }
                             }
@@ -398,7 +407,7 @@ private fun PlayLobbyView(
                                     text = "⚡ FAST",
                                     color = Color(0xFF93C5FD),
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 10.sp,
+                                    fontSize = 13.sp,
                                     modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                                 )
                             }
@@ -416,11 +425,11 @@ private fun PlayLobbyView(
                             horizontalArrangement = Arrangement.SpaceAround
                         ) {
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text("WIN MATCH", color = Color(0xFF34D399), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                                Text("WIN MATCH", color = Color(0xFF34D399), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                                 Text("+10 PTS", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.ExtraBold)
                             }
                             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                                Text("LOSE MATCH", color = Color(0xFFF87171), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                                Text("LOSE MATCH", color = Color(0xFFF87171), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                                 Text("-10 PTS", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.ExtraBold)
                             }
                             Column(
@@ -431,7 +440,7 @@ private fun PlayLobbyView(
                                     .padding(horizontal = 4.dp, vertical = 2.dp)
                             ) {
                                 Row(verticalAlignment = Alignment.CenterVertically) {
-                                    Text("FORMAT", color = Color(0xFF60A5FA), fontSize = 10.sp, fontWeight = FontWeight.Bold)
+                                    Text("FORMAT", color = Color(0xFF60A5FA), fontSize = 13.sp, fontWeight = FontWeight.Bold)
                                     Spacer(modifier = Modifier.width(3.dp))
                                     Icon(Icons.Default.Tune, contentDescription = "Edit Time", tint = Color(0xFF60A5FA), modifier = Modifier.size(10.dp))
                                 }
@@ -478,7 +487,7 @@ private fun PlayLobbyView(
                                                 else -> "Classic"
                                             },
                                             color = if (isSelected) Color(0xFF93C5FD) else Color(0xFF64748B),
-                                            fontSize = 9.sp,
+                                            fontSize = 14.sp,
                                             fontWeight = FontWeight.SemiBold
                                         )
                                     }
@@ -512,7 +521,7 @@ private fun PlayLobbyView(
                                     Text(
                                         text = "⚙️ Choose",
                                         color = if (isCustom) Color(0xFF93C5FD) else Color(0xFF64748B),
-                                        fontSize = 9.sp,
+                                        fontSize = 14.sp,
                                         fontWeight = FontWeight.SemiBold
                                     )
                                 }
@@ -567,7 +576,7 @@ private fun PlayLobbyView(
                     text = "Quick Launch",
                     color = Color(0xFF64748B),
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 12.sp
+                    fontSize = 14.sp
                 )
             }
         }
@@ -610,7 +619,7 @@ private fun PlayLobbyView(
                                 Text(
                                     text = "DAILY",
                                     color = Color(0xFF34D399),
-                                    fontSize = 9.sp,
+                                    fontSize = 14.sp,
                                     fontWeight = FontWeight.ExtraBold,
                                     modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                                 )
@@ -627,7 +636,7 @@ private fun PlayLobbyView(
                         Text(
                             text = "Tactics & Mate in 2",
                             color = Color(0xFF94A3B8),
-                            fontSize = 11.sp
+                            fontSize = 13.sp
                         )
                     }
                 }
@@ -665,7 +674,7 @@ private fun PlayLobbyView(
                                     Text(
                                         text = "$pendingCount NEW",
                                         color = Color.White,
-                                        fontSize = 9.sp,
+                                        fontSize = 14.sp,
                                         fontWeight = FontWeight.ExtraBold,
                                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                                     )
@@ -678,7 +687,7 @@ private fun PlayLobbyView(
                                     Text(
                                         text = "INVITE",
                                         color = Color(0xFFA5B4FC),
-                                        fontSize = 9.sp,
+                                        fontSize = 14.sp,
                                         fontWeight = FontWeight.ExtraBold,
                                         modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                                     )
@@ -696,7 +705,7 @@ private fun PlayLobbyView(
                         Text(
                             text = "${friends.size} Friends • Chat",
                             color = Color(0xFF94A3B8),
-                            fontSize = 11.sp
+                            fontSize = 13.sp
                         )
                     }
                 }
@@ -720,7 +729,7 @@ private fun PlayLobbyView(
                     text = "FIDE Rating Stats",
                     color = Color(0xFF64748B),
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 12.sp
+                    fontSize = 14.sp
                 )
             }
         }
@@ -828,7 +837,7 @@ private fun PlayLobbyView(
                                         else -> "♟️ Classical Chess"
                                     },
                                     color = Color(0xFF38BDF8),
-                                    fontSize = 12.sp,
+                                    fontSize = 14.sp,
                                     fontWeight = FontWeight.SemiBold
                                 )
                             }
@@ -879,7 +888,7 @@ private fun PlayLobbyView(
                                 Text(
                                     text = "${preset}m",
                                     color = Color.White,
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = FontWeight.Bold,
                                     textAlign = TextAlign.Center,
                                     modifier = Modifier.padding(vertical = 6.dp)
@@ -952,7 +961,7 @@ private fun StatCard(
                 Text(
                     text = title.uppercase(),
                     color = Color(0xFF94A3B8),
-                    fontSize = 10.sp,
+                    fontSize = 13.sp,
                     fontWeight = FontWeight.Bold,
                     letterSpacing = 0.5.sp
                 )
@@ -1106,7 +1115,7 @@ private fun SearchingOpponentView(
                         Text(
                             text = "${cyclingPlayer.country.name} • ${cyclingPlayer.rating} PTS",
                             color = Color(0xFF38BDF8),
-                            fontSize = 12.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.Medium
                         )
                     }
@@ -1164,7 +1173,10 @@ private fun ActiveGameView(
             .testTag("active_chess_game_view")
     ) {
         Column(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .widthIn(max = 560.dp)
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.Top,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -1180,9 +1192,11 @@ private fun ActiveGameView(
                         Text(
                             text = "PLAYER 1 (YOU)",
                             color = Color(0xFFE2E8F0),
-                            fontSize = 11.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
-                            letterSpacing = 1.2.sp
+                            letterSpacing = 1.2.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = String.format("%02d:%02d", gameState.playerTimeSeconds / 60, gameState.playerTimeSeconds % 60),
@@ -1195,9 +1209,11 @@ private fun ActiveGameView(
                         Text(
                             text = gameState.opponent?.username?.uppercase() ?: "OPPONENT",
                             color = Color(0xFFE2E8F0),
-                            fontSize = 11.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.SemiBold,
-                            letterSpacing = 1.2.sp
+                            letterSpacing = 1.2.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
                         )
                         Text(
                             text = String.format("%02d:%02d", gameState.opponentTimeSeconds / 60, gameState.opponentTimeSeconds % 60),
@@ -1235,7 +1251,9 @@ private fun ActiveGameView(
                 showCoordinates = false,
                 flipped = gameState.playerColor == PieceColor.BLACK,
                 onSquareClick = { pos -> viewModel.onSquareClicked(pos) },
-                modifier = Modifier.fillMaxWidth()
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .widthIn(max = 560.dp)
             )
 
             Spacer(modifier = Modifier.height(6.dp))
@@ -1270,7 +1288,7 @@ private fun ActiveGameView(
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFF94A3B8)),
                         modifier = Modifier.testTag("draw_offer_button")
                     ) {
-                        Text("Offer Draw", fontSize = 12.sp)
+                        Text("Offer Draw", fontSize = 14.sp)
                     }
 
                     OutlinedButton(
@@ -1279,7 +1297,7 @@ private fun ActiveGameView(
                         colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFFF87171)),
                         modifier = Modifier.testTag("resign_button")
                     ) {
-                        Text("Resign", fontSize = 12.sp)
+                        Text("Resign", fontSize = 14.sp)
                     }
                 }
 

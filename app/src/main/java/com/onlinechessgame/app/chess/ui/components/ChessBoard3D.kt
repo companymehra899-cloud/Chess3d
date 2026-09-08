@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -40,6 +41,7 @@ import com.onlinechessgame.app.chess.model.Piece
 import com.onlinechessgame.app.chess.model.PieceColor
 import com.onlinechessgame.app.chess.model.PieceType
 import com.onlinechessgame.app.chess.model.Position
+import com.onlinechessgame.app.ui.theme.AppSpace
 
 enum class BoardThemeStyle(
     val id: String,
@@ -189,7 +191,8 @@ fun ChessBoard3D(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .aspectRatio(if (isometric) 1.12f else 1f)
+            .widthIn(max = AppSpace.boardMax)
+            .aspectRatio(1f)
             .shadow(16.dp, RoundedCornerShape(12.dp))
             .graphicsLayer {
                 if (isometric) {
@@ -212,9 +215,6 @@ fun ChessBoard3D(
                 )
                 .padding(4.dp)
         ) {
-            val boardSize = maxWidth
-            val squareSize = (boardSize - 8.dp) / 8f
-
             // Outer molded plastic tournament bevel frame canvas
             Canvas(modifier = Modifier.fillMaxSize()) {
                 val w = size.width
@@ -487,7 +487,7 @@ private fun ChessSquareView(
             Text(
                 text = "${position.rank}",
                 color = labelColor.copy(alpha = 0.65f),
-                fontSize = 8.5.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace,
                 modifier = Modifier
@@ -499,7 +499,7 @@ private fun ChessSquareView(
             Text(
                 text = "${position.file}",
                 color = labelColor.copy(alpha = 0.65f),
-                fontSize = 8.5.sp,
+                fontSize = 14.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Monospace,
                 modifier = Modifier

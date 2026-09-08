@@ -363,7 +363,7 @@ fun Avatar3DModalDialog(
                                     text = "EQUIPPED",
                                     color = Color.White,
                                     fontWeight = FontWeight.Black,
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     letterSpacing = 0.5.sp,
                                     modifier = Modifier.padding(horizontal = 14.dp, vertical = 4.dp)
                                 )
@@ -394,7 +394,7 @@ fun Avatar3DModalDialog(
                                     text = "💎 ${avatar.costGems} GEMS",
                                     color = Color(0xFFD97706),
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     modifier = Modifier.padding(horizontal = 12.dp, vertical = 3.dp)
                                 )
                             }
@@ -408,7 +408,7 @@ fun Avatar3DModalDialog(
                                     text = "FREE",
                                     color = Color(0xFF059669),
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     modifier = Modifier.padding(horizontal = 14.dp, vertical = 3.dp)
                                 )
                             }
@@ -420,7 +420,7 @@ fun Avatar3DModalDialog(
                         Text(
                             text = avatar.description ?: "Master of tactical foresight and strategic precision.",
                             color = Color(0xFF475569),
-                            fontSize = 12.5.sp,
+                            fontSize = 14.sp,
                             lineHeight = 16.sp,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth()
@@ -617,7 +617,7 @@ fun AvatarSelectionModalDialog(
                                     text = label,
                                     color = if (isSelected) Color(0xFF0F172A) else Color(0xFF94A3B8),
                                     fontWeight = if (isSelected) FontWeight.Black else FontWeight.SemiBold,
-                                    fontSize = 12.sp,
+                                    fontSize = 14.sp,
                                     modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp)
                                 )
                             }
@@ -780,7 +780,7 @@ fun AvatarSelectionModalDialog(
                                     text = "Unlock Stylish 3D\nAvatars with Gems!",
                                     color = Color.White,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     lineHeight = 14.sp
                                 )
                             }
@@ -795,7 +795,7 @@ fun AvatarSelectionModalDialog(
                                     text = "BUY AVATARS",
                                     color = Color(0xFF0F172A),
                                     fontWeight = FontWeight.Black,
-                                    fontSize = 11.sp
+                                    fontSize = 13.sp
                                 )
                             }
                         }
@@ -978,7 +978,7 @@ fun LockedAvatarModalDialog(
                         Text(
                             text = "This avatar is locked. Unlock it to use in the game.",
                             color = Color(0xFF64748B),
-                            fontSize = 12.sp,
+                            fontSize = 14.sp,
                             textAlign = TextAlign.Center,
                             modifier = Modifier.fillMaxWidth()
                         )
@@ -1001,7 +1001,7 @@ fun LockedAvatarModalDialog(
                                     text = "REQUIREMENT",
                                     color = Color(0xFFEA580C),
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     letterSpacing = 1.sp
                                 )
                                 Spacer(modifier = Modifier.height(6.dp))

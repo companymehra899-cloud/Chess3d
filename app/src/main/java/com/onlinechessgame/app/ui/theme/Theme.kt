@@ -23,10 +23,12 @@ private val ChessDarkColorScheme = darkColorScheme(
 fun Chess3DTheme(
     content: @Composable () -> Unit
 ) {
-    MaterialTheme(
-        colorScheme = ChessDarkColorScheme,
-        typography = Typography,
-        content = content
-    )
+    ProvideReadableDensity {
+        MaterialTheme(
+            colorScheme = ChessDarkColorScheme,
+            typography = Typography,
+            content = content
+        )
+    }
 }
 

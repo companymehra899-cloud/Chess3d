@@ -102,7 +102,7 @@ fun LeaderboardScreen(
                         Text(
                             text = "Worldwide Ranked Grandmasters",
                             color = Color(0xFF94A3B8),
-                            fontSize = 12.sp
+                            fontSize = 14.sp
                         )
                     }
                 }
@@ -141,7 +141,7 @@ fun LeaderboardScreen(
                                 Text(
                                     text = "RANK",
                                     color = Color(0xFF38BDF8),
-                                    fontSize = 10.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = FontWeight.Black,
                                     letterSpacing = 0.8.sp
                                 )
@@ -185,7 +185,7 @@ fun LeaderboardScreen(
                                     fontSize = 13.5.sp
                                 )
                                 Spacer(modifier = Modifier.width(4.dp))
-                                Text(profile?.countryFlag ?: "🇺🇸", fontSize = 12.5.sp)
+                                Text(profile?.countryFlag ?: "🇺🇸", fontSize = 14.sp)
                             }
                         }
 
@@ -210,7 +210,7 @@ fun LeaderboardScreen(
                                     text = "${profile?.ratingPoints ?: 1200}",
                                     color = Color.White,
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 12.5.sp
+                                    fontSize = 14.sp
                                 )
                             }
                         }
@@ -328,7 +328,7 @@ private fun LeaderboardItemRow(player: LeaderboardPlayer) {
                         Text(
                             text = "RANK",
                             color = rankHeaderColor,
-                            fontSize = 10.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.Black,
                             letterSpacing = 0.8.sp
                         )
@@ -376,12 +376,12 @@ private fun LeaderboardItemRow(player: LeaderboardPlayer) {
                             fontSize = 13.5.sp
                         )
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text(player.country.flag, fontSize = 12.sp)
+                        Text(player.country.flag, fontSize = 14.sp)
                     }
                     Text(
                         text = player.titleBadge,
                         color = if (player.rank <= 3) Color(0xFFFBBF24) else Color(0xFF94A3B8),
-                        fontSize = 10.5.sp,
+                        fontSize = 13.sp,
                         fontWeight = FontWeight.Medium
                     )
                 }
@@ -408,7 +408,7 @@ private fun LeaderboardItemRow(player: LeaderboardPlayer) {
                         text = "${player.ratingPoints}",
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp
+                        fontSize = 14.sp
                     )
                 }
             }

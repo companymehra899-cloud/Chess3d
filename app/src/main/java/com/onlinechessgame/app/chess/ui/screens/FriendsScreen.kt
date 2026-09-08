@@ -137,7 +137,7 @@ fun FriendsScreen(
                         Text(
                             text = "Challenge friends & connect worldwide",
                             color = Color(0xFF94A3B8),
-                            fontSize = 12.sp
+                            fontSize = 14.sp
                         )
                     }
 
@@ -154,7 +154,7 @@ fun FriendsScreen(
                                 Text(
                                     text = "$pendingCount new request${if (pendingCount > 1) "s" else ""}",
                                     color = Color.White,
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = FontWeight.Bold
                                 )
                             }
@@ -233,7 +233,7 @@ fun FriendsScreen(
                     Text(
                         text = actionMessage ?: "",
                         color = Color(0xFFE2E8F0),
-                        fontSize = 12.sp,
+                        fontSize = 14.sp,
                         fontWeight = FontWeight.Medium,
                         modifier = Modifier.weight(1f)
                     )
@@ -398,7 +398,7 @@ private fun StatusIndicator(color: Color, label: String) {
                 .background(color)
         )
         Spacer(modifier = Modifier.width(6.dp))
-        Text(text = label, color = Color(0xFFCBD5E1), fontSize = 12.sp, fontWeight = FontWeight.Medium)
+        Text(text = label, color = Color(0xFFCBD5E1), fontSize = 14.sp, fontWeight = FontWeight.Medium)
     }
 }
 
@@ -475,7 +475,7 @@ private fun FriendCard(
                         Text(
                             text = "⭐ ${friend.rating}",
                             color = Color(0xFF38BDF8),
-                            fontSize = 11.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                         )
@@ -496,7 +496,7 @@ private fun FriendCard(
                     Text(
                         text = statusLabel,
                         color = statusColor,
-                        fontSize = 11.sp
+                        fontSize = 13.sp
                     )
                 }
             }
@@ -509,7 +509,7 @@ private fun FriendCard(
                 contentPadding = PaddingValues(horizontal = 12.dp, vertical = 6.dp),
                 modifier = Modifier.testTag("challenge_${friend.username}")
             ) {
-                Text("Play ⚔️", fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                Text("Play ⚔️", fontWeight = FontWeight.Bold, fontSize = 14.sp)
             }
 
             Spacer(modifier = Modifier.width(4.dp))
@@ -617,7 +617,7 @@ private fun RequestsTab(
                                 Text(
                                     text = "Rating: ${req.rating} • ${req.countryName}",
                                     color = Color(0xFF94A3B8),
-                                    fontSize = 11.sp
+                                    fontSize = 13.sp
                                 )
                             }
 
@@ -631,7 +631,7 @@ private fun RequestsTab(
                             ) {
                                 Icon(Icons.Default.Check, contentDescription = null, modifier = Modifier.size(16.dp))
                                 Spacer(modifier = Modifier.width(4.dp))
-                                Text("Accept", fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                                Text("Accept", fontSize = 14.sp, fontWeight = FontWeight.Bold)
                             }
 
                             Spacer(modifier = Modifier.width(6.dp))
@@ -699,7 +699,7 @@ private fun RequestsTab(
                                 Text(
                                     text = "Pending response...",
                                     color = Color(0xFFF59E0B),
-                                    fontSize = 11.sp
+                                    fontSize = 13.sp
                                 )
                             }
 
@@ -710,7 +710,7 @@ private fun RequestsTab(
                                 contentPadding = PaddingValues(horizontal = 10.dp, vertical = 6.dp),
                                 modifier = Modifier.testTag("cancel_${req.username}")
                             ) {
-                                Text("Cancel", fontSize = 12.sp)
+                                Text("Cancel", fontSize = 14.sp)
                             }
                         }
                     }
@@ -766,7 +766,7 @@ private fun AddAndDiscoverTab(
                     Text(
                         text = "Enter the exact player username to send a direct friend request.",
                         color = Color(0xFF94A3B8),
-                        fontSize = 12.sp
+                        fontSize = 14.sp
                     )
                     Spacer(modifier = Modifier.height(12.dp))
 
@@ -865,7 +865,7 @@ private fun AddAndDiscoverTab(
                         Text(
                             text = "Rating: ${player.rating} • ${player.country}",
                             color = Color(0xFF94A3B8),
-                            fontSize = 12.sp
+                            fontSize = 14.sp
                         )
                     }
 
@@ -882,7 +882,7 @@ private fun AddAndDiscoverTab(
                     ) {
                         Text(
                             text = if (isAlreadyAdded) "Requested" else "+ Add",
-                            fontSize = 12.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.Bold
                         )
                     }

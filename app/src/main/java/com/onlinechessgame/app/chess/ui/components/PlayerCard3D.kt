@@ -117,7 +117,7 @@ fun PlayerCard3D(
                     ) {
                         Text(
                             text = countryFlag,
-                            fontSize = 12.sp
+                            fontSize = 14.sp
                         )
                     }
 
@@ -132,7 +132,7 @@ fun PlayerCard3D(
                         Text(
                             text = rating.toString(),
                             color = Color(0xFF94A3B8),
-                            fontSize = 11.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp)
                         )
@@ -150,7 +150,7 @@ fun PlayerCard3D(
                         Text(
                             text = if (playerColor == PieceColor.WHITE) "White (Playing)" else "Black (Playing)",
                             color = Color(0xFF94A3B8),
-                            fontSize = 11.sp
+                            fontSize = 13.sp
                         )
                     } else {
                         val displayList = capturedPieces.take(7)
@@ -171,7 +171,7 @@ fun PlayerCard3D(
                             Text(
                                 text = "+${capturedPieces.size - 7}",
                                 color = Color(0xFFFBBF24),
-                                fontSize = 10.sp,
+                                fontSize = 13.sp,
                                 fontWeight = FontWeight.Bold,
                                 modifier = Modifier.padding(start = 2.dp)
                             )

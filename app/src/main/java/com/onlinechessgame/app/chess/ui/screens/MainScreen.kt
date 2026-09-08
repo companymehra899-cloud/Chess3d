@@ -7,11 +7,15 @@ import androidx.compose.animation.togetherWith
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.layout.windowInsetsPadding
+import androidx.compose.ui.Alignment
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.EmojiEvents
@@ -45,6 +49,7 @@ import androidx.compose.ui.unit.sp
 import com.onlinechessgame.app.chess.ui.viewmodel.AppTab
 import com.onlinechessgame.app.chess.ui.viewmodel.ChessViewModel
 import com.onlinechessgame.app.chess.ui.viewmodel.MatchmakingState
+import com.onlinechessgame.app.ui.theme.AppSpace
 
 @Composable
 fun MainScreen(
@@ -95,7 +100,7 @@ fun MainScreen(
                                 modifier = Modifier.size(24.dp)
                             )
                         },
-                        label = { Text("Play", fontSize = 11.sp, fontWeight = FontWeight.SemiBold) },
+                        label = { Text("Play", fontSize = 13.sp, fontWeight = FontWeight.SemiBold) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Color(0xFF38BDF8),
                             selectedTextColor = Color(0xFF38BDF8),
@@ -131,7 +136,7 @@ fun MainScreen(
                                 )
                             }
                         },
-                        label = { Text("Friends", fontSize = 11.sp, fontWeight = FontWeight.SemiBold) },
+                        label = { Text("Friends", fontSize = 13.sp, fontWeight = FontWeight.SemiBold) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Color(0xFF38BDF8),
                             selectedTextColor = Color(0xFF38BDF8),
@@ -153,7 +158,7 @@ fun MainScreen(
                                 modifier = Modifier.size(24.dp)
                             )
                         },
-                        label = { Text("History", fontSize = 11.sp, fontWeight = FontWeight.SemiBold) },
+                        label = { Text("History", fontSize = 13.sp, fontWeight = FontWeight.SemiBold) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Color(0xFF38BDF8),
                             selectedTextColor = Color(0xFF38BDF8),
@@ -175,7 +180,7 @@ fun MainScreen(
                                 modifier = Modifier.size(24.dp)
                             )
                         },
-                        label = { Text("Leaders", fontSize = 11.sp, fontWeight = FontWeight.SemiBold) },
+                        label = { Text("Leaders", fontSize = 13.sp, fontWeight = FontWeight.SemiBold) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Color(0xFF38BDF8),
                             selectedTextColor = Color(0xFF38BDF8),
@@ -197,7 +202,7 @@ fun MainScreen(
                                 modifier = Modifier.size(24.dp)
                             )
                         },
-                        label = { Text("Profile", fontSize = 11.sp, fontWeight = FontWeight.SemiBold) },
+                        label = { Text("Profile", fontSize = 13.sp, fontWeight = FontWeight.SemiBold) },
                         colors = NavigationBarItemDefaults.colors(
                             selectedIconColor = Color(0xFF38BDF8),
                             selectedTextColor = Color(0xFF38BDF8),
@@ -214,21 +219,29 @@ fun MainScreen(
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .padding(innerPadding)
+                .padding(innerPadding),
+            contentAlignment = Alignment.TopCenter
         ) {
-            AnimatedContent(
-                targetState = currentTab,
-                transitionSpec = { fadeIn() togetherWith fadeOut() },
-                label = "tab_transition"
-            ) { target ->
-                when (target) {
-                    AppTab.PLAY -> PlayScreen(viewModel = viewModel)
-                    AppTab.FRIENDS -> FriendsScreen(viewModel = viewModel)
-                    AppTab.HISTORY -> GameHistoryScreen(viewModel = viewModel)
-                    AppTab.PUZZLES -> PuzzlesScreen(viewModel = viewModel)
-                    AppTab.LEADERBOARD -> LeaderboardScreen(viewModel = viewModel)
-                    AppTab.PROFILE -> ProfileScreen(viewModel = viewModel)
-                    AppTab.SETTINGS -> SettingsScreen(viewModel = viewModel)
+            Box(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .fillMaxWidth()
+                    .widthIn(max = AppSpace.boardMax + 160.dp)
+            ) {
+                AnimatedContent(
+                    targetState = currentTab,
+                    transitionSpec = { fadeIn() togetherWith fadeOut() },
+                    label = "tab_transition"
+                ) { target ->
+                    when (target) {
+                        AppTab.PLAY -> PlayScreen(viewModel = viewModel)
+                        AppTab.FRIENDS -> FriendsScreen(viewModel = viewModel)
+                        AppTab.HISTORY -> GameHistoryScreen(viewModel = viewModel)
+                        AppTab.PUZZLES -> PuzzlesScreen(viewModel = viewModel)
+                        AppTab.LEADERBOARD -> LeaderboardScreen(viewModel = viewModel)
+                        AppTab.PROFILE -> ProfileScreen(viewModel = viewModel)
+                        AppTab.SETTINGS -> SettingsScreen(viewModel = viewModel)
+                    }
                 }
             }
         }

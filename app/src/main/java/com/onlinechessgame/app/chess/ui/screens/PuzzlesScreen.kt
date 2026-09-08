@@ -109,7 +109,7 @@ fun PuzzlesScreen(
                         Text(
                             text = currentPuzzle.tacticTheme,
                             color = Color(0xFF93C5FD),
-                            fontSize = 11.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.SemiBold,
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
                         )
@@ -134,7 +134,7 @@ fun PuzzlesScreen(
                         Text(
                             text = "+${currentPuzzle.rewardTokens} Tokens",
                             color = Color(0xFFFBBF24),
-                            fontSize = 11.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                         )
@@ -146,7 +146,7 @@ fun PuzzlesScreen(
                         Text(
                             text = "+${currentPuzzle.rewardPoints} Rating Pts",
                             color = Color(0xFF34D399),
-                            fontSize = 11.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.Bold,
                             modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                         )

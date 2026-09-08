@@ -157,7 +157,7 @@ fun GameChatSheet(
                         Text(
                             text = quickPhrase,
                             color = Color(0xFFE2E8F0),
-                            fontSize = 12.sp,
+                            fontSize = 14.sp,
                             modifier = Modifier.padding(horizontal = 12.dp, vertical = 6.dp)
                         )
                     }
@@ -289,7 +289,7 @@ private fun ChatBubble(msg: ChatMessage) {
                 Text(
                     text = msg.senderName,
                     color = if (isPlayer) Color(0xFF93C5FD) else Color(0xFF94A3B8),
-                    fontSize = 10.sp,
+                    fontSize = 13.sp,
                     fontWeight = FontWeight.Bold
                 )
                 Spacer(modifier = Modifier.height(2.dp))
@@ -324,7 +324,7 @@ fun FloatingChatButton(
                 badge = {
                     if (unreadCount > 0) {
                         Badge(containerColor = Color(0xFFEF4444)) {
-                            Text("$unreadCount", color = Color.White, fontSize = 10.sp)
+                            Text("$unreadCount", color = Color.White, fontSize = 13.sp)
                         }
                     }
                 }

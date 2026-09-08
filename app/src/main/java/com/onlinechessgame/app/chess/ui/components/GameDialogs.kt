@@ -103,7 +103,7 @@ fun PawnPromotionDialog(
                                 Text(
                                     text = name,
                                     color = Color(0xFFE2E8F0),
-                                    fontSize = 11.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = FontWeight.Medium
                                 )
                             }
@@ -343,7 +343,7 @@ fun MatchDetailsDialog(
                         Text(
                             text = result,
                             color = badgeColor,
-                            fontSize = 12.sp,
+                            fontSize = 14.sp,
                             fontWeight = FontWeight.ExtraBold,
                             modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                         )
@@ -374,7 +374,7 @@ fun MatchDetailsDialog(
                             Text(
                                 text = "Rating: $opponentRating",
                                 color = Color(0xFF94A3B8),
-                                fontSize = 12.sp
+                                fontSize = 14.sp
                             )
                         }
                         Column(horizontalAlignment = Alignment.End) {
@@ -387,7 +387,7 @@ fun MatchDetailsDialog(
                             Text(
                                 text = if (tokensEarned > 0) "+$tokensEarned 🪙" else if (tokensEarned < 0) "$tokensEarned 🪙" else "0 🪙",
                                 color = if (tokensEarned > 0) Color(0xFF34D399) else if (tokensEarned < 0) Color(0xFFF87171) else Color(0xFFFBBF24),
-                                fontSize = 12.sp,
+                                fontSize = 14.sp,
                                 fontWeight = FontWeight.SemiBold
                             )
                         }

@@ -117,7 +117,7 @@ fun GameHistoryScreen(
                 Text(
                     text = "Review completed matches and career stats",
                     color = Color(0xFF94A3B8),
-                    fontSize = 12.sp
+                    fontSize = 14.sp
                 )
 
                 Spacer(modifier = Modifier.height(14.dp))
@@ -154,7 +154,7 @@ fun GameHistoryScreen(
                     FilterChip(
                         selected = filter == HistoryFilter.ALL,
                         onClick = { viewModel.setHistoryFilter(HistoryFilter.ALL) },
-                        label = { Text("All (${matches.size})", fontSize = 12.sp) },
+                        label = { Text("All (${matches.size})", fontSize = 14.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = Color(0xFF2563EB),
                             selectedLabelColor = Color.White,
@@ -166,7 +166,7 @@ fun GameHistoryScreen(
                     FilterChip(
                         selected = filter == HistoryFilter.WINS,
                         onClick = { viewModel.setHistoryFilter(HistoryFilter.WINS) },
-                        label = { Text("Wins ($totalWins)", fontSize = 12.sp) },
+                        label = { Text("Wins ($totalWins)", fontSize = 14.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = Color(0xFF059669),
                             selectedLabelColor = Color.White,
@@ -178,7 +178,7 @@ fun GameHistoryScreen(
                     FilterChip(
                         selected = filter == HistoryFilter.LOSSES,
                         onClick = { viewModel.setHistoryFilter(HistoryFilter.LOSSES) },
-                        label = { Text("Losses ($totalLosses)", fontSize = 12.sp) },
+                        label = { Text("Losses ($totalLosses)", fontSize = 14.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = Color(0xFFDC2626),
                             selectedLabelColor = Color.White,
@@ -190,7 +190,7 @@ fun GameHistoryScreen(
                     FilterChip(
                         selected = filter == HistoryFilter.DRAWS,
                         onClick = { viewModel.setHistoryFilter(HistoryFilter.DRAWS) },
-                        label = { Text("Draws ($totalDraws)", fontSize = 12.sp) },
+                        label = { Text("Draws ($totalDraws)", fontSize = 14.sp) },
                         colors = FilterChipDefaults.filterChipColors(
                             selectedContainerColor = Color(0xFF475569),
                             selectedLabelColor = Color.White,
@@ -297,7 +297,7 @@ private fun StatColumn(label: String, value: String, color: Color) {
         Text(
             text = label,
             color = Color(0xFF94A3B8),
-            fontSize = 11.sp
+            fontSize = 13.sp
         )
     }
 }
@@ -386,7 +386,7 @@ private fun MatchCard(
                         text = resultText,
                         color = resultBadgeColor,
                         fontWeight = FontWeight.ExtraBold,
-                        fontSize = 12.sp,
+                        fontSize = 14.sp,
                         letterSpacing = 0.5.sp
                     )
                     Spacer(modifier = Modifier.width(6.dp))
@@ -394,7 +394,7 @@ private fun MatchCard(
                         text = "• $pointsText",
                         color = if (isWin) Color(0xFF34D399) else if (isLoss) Color(0xFFF87171) else Color(0xFF94A3B8),
                         fontWeight = FontWeight.Bold,
-                        fontSize = 12.sp
+                        fontSize = 14.sp
                     )
                     Spacer(modifier = Modifier.width(6.dp))
                     val tokensText = when {
@@ -410,7 +410,7 @@ private fun MatchCard(
                     Text(
                         text = tokensText,
                         color = tokensColor,
-                        fontSize = 11.sp,
+                        fontSize = 13.sp,
                         fontWeight = FontWeight.SemiBold
                     )
                 }
@@ -430,7 +430,7 @@ private fun MatchCard(
                     Text(
                         text = "(${match.opponentRating})",
                         color = Color(0xFF94A3B8),
-                        fontSize = 12.sp
+                        fontSize = 14.sp
                     )
                 }
 
@@ -439,7 +439,7 @@ private fun MatchCard(
                 Text(
                     text = "${match.gameMode} • ${match.totalMoves} moves • $formattedTime",
                     color = Color(0xFF64748B),
-                    fontSize = 11.sp
+                    fontSize = 13.sp
                 )
             }
 

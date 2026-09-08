@@ -163,7 +163,7 @@ fun SettingsScreen(
                             Text(
                                 text = "Choose between weighted plastic and luxury styles",
                                 color = Color(0xFF94A3B8),
-                                fontSize = 11.5.sp
+                                fontSize = 13.sp
                             )
                         }
                     }
@@ -206,7 +206,7 @@ fun SettingsScreen(
                                                 Text(
                                                     text = style.badge,
                                                     color = Color(0xFF7DD3FC),
-                                                    fontSize = 9.sp,
+                                                    fontSize = 14.sp,
                                                     fontWeight = FontWeight.Bold,
                                                     modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
                                                 )
@@ -215,7 +215,7 @@ fun SettingsScreen(
                                         Text(
                                             text = style.subtitle,
                                             color = Color(0xFF94A3B8),
-                                            fontSize = 11.sp
+                                            fontSize = 13.sp
                                         )
                                     }
 
@@ -227,7 +227,7 @@ fun SettingsScreen(
                                             Text(
                                                 text = "Active",
                                                 color = Color(0xFF34D399),
-                                                fontSize = 11.sp,
+                                                fontSize = 13.sp,
                                                 fontWeight = FontWeight.Bold,
                                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                                             )
@@ -266,7 +266,7 @@ fun SettingsScreen(
                     Text(
                         text = "3 NORMAL SIMPLE BOARDS",
                         color = Color(0xFF38BDF8),
-                        fontSize = 11.sp,
+                        fontSize = 13.sp,
                         fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = Modifier.height(6.dp))
@@ -313,7 +313,7 @@ fun SettingsScreen(
                                             Text(
                                                 text = themeStyle.subtitle,
                                                 color = Color(0xFF94A3B8),
-                                                fontSize = 10.5.sp
+                                                fontSize = 13.sp
                                             )
                                         }
                                     }
@@ -326,7 +326,7 @@ fun SettingsScreen(
                                             Text(
                                                 text = "Active",
                                                 color = Color(0xFF34D399),
-                                                fontSize = 11.sp,
+                                                fontSize = 13.sp,
                                                 fontWeight = FontWeight.Bold,
                                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                                             )
@@ -341,7 +341,7 @@ fun SettingsScreen(
                     Text(
                         text = "3D BOARDS",
                         color = Color(0xFFFDE68A),
-                        fontSize = 11.sp,
+                        fontSize = 13.sp,
                         fontWeight = FontWeight.Bold
                     )
                     Spacer(modifier = Modifier.height(6.dp))
@@ -396,7 +396,7 @@ fun SettingsScreen(
                                                         Text(
                                                             text = "TRUE 3D",
                                                             color = Color(0xFFFDE68A),
-                                                            fontSize = 9.sp,
+                                                            fontSize = 14.sp,
                                                             fontWeight = FontWeight.Bold,
                                                             modifier = Modifier.padding(horizontal = 4.dp, vertical = 2.dp)
                                                         )
@@ -406,7 +406,7 @@ fun SettingsScreen(
                                             Text(
                                                 text = themeStyle.subtitle,
                                                 color = Color(0xFF94A3B8),
-                                                fontSize = 10.5.sp
+                                                fontSize = 13.sp
                                             )
                                         }
                                     }
@@ -419,7 +419,7 @@ fun SettingsScreen(
                                             Text(
                                                 text = "Active",
                                                 color = Color(0xFF34D399),
-                                                fontSize = 11.sp,
+                                                fontSize = 13.sp,
                                                 fontWeight = FontWeight.Bold,
                                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                                             )
@@ -459,7 +459,7 @@ fun SettingsScreen(
                     ) {
                         Column(modifier = Modifier.weight(1f)) {
                             Text("Auto-Queen Promotion", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                            Text("Instantly promote pawns to Queen on reaching back rank", color = Color(0xFF94A3B8), fontSize = 11.sp)
+                            Text("Instantly promote pawns to Queen on reaching back rank", color = Color(0xFF94A3B8), fontSize = 13.sp)
                         }
                         Switch(
                             checked = profile?.autoQueenPromotion ?: true,
@@ -487,13 +487,13 @@ fun SettingsScreen(
                                     Text(
                                         text = if (profile?.soundEffects != false) "ON" else "MUTED",
                                         color = if (profile?.soundEffects != false) Color(0xFF34D399) else Color(0xFFF87171),
-                                        fontSize = 9.5.sp,
+                                        fontSize = 13.sp,
                                         fontWeight = FontWeight.Bold,
                                         modifier = Modifier.padding(horizontal = 5.dp, vertical = 2.dp)
                                     )
                                 }
                             }
-                            Text("Piece move clicks, capture knocks, and victory alerts", color = Color(0xFF94A3B8), fontSize = 11.sp)
+                            Text("Piece move clicks, capture knocks, and victory alerts", color = Color(0xFF94A3B8), fontSize = 13.sp)
                         }
                         Switch(
                             checked = profile?.soundEffects ?: true,
@@ -509,7 +509,7 @@ fun SettingsScreen(
                         Text(
                             text = "PREVIEW AUDIO CLIPS",
                             color = Color(0xFF38BDF8),
-                            fontSize = 10.sp,
+                            fontSize = 13.sp,
                             fontWeight = FontWeight.Bold
                         )
                         Spacer(modifier = Modifier.height(6.dp))
@@ -531,7 +531,7 @@ fun SettingsScreen(
                                     horizontalArrangement = Arrangement.Center,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Text("♟️ Move", color = Color.White, fontSize = 11.5.sp, fontWeight = FontWeight.Medium)
+                                    Text("♟️ Move", color = Color.White, fontSize = 13.sp, fontWeight = FontWeight.Medium)
                                 }
                             }
 
@@ -549,7 +549,7 @@ fun SettingsScreen(
                                     horizontalArrangement = Arrangement.Center,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Text("⚔️ Capture", color = Color(0xFFF87171), fontSize = 11.5.sp, fontWeight = FontWeight.Medium)
+                                    Text("⚔️ Capture", color = Color(0xFFF87171), fontSize = 13.sp, fontWeight = FontWeight.Medium)
                                 }
                             }
 
@@ -567,7 +567,7 @@ fun SettingsScreen(
                                     horizontalArrangement = Arrangement.Center,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Text("🏆 Checkmate", color = Color(0xFFFBBF24), fontSize = 11.sp, fontWeight = FontWeight.Medium)
+                                    Text("🏆 Checkmate", color = Color(0xFFFBBF24), fontSize = 13.sp, fontWeight = FontWeight.Medium)
                                 }
                             }
 
@@ -585,7 +585,7 @@ fun SettingsScreen(
                                     horizontalArrangement = Arrangement.Center,
                                     verticalAlignment = Alignment.CenterVertically
                                 ) {
-                                    Text("🔘 Tap", color = Color(0xFF38BDF8), fontSize = 11.5.sp, fontWeight = FontWeight.Medium)
+                                    Text("🔘 Tap", color = Color(0xFF38BDF8), fontSize = 13.sp, fontWeight = FontWeight.Medium)
                                 }
                             }
                         }
@@ -601,7 +601,7 @@ fun SettingsScreen(
                     ) {
                         Column(modifier = Modifier.weight(1f)) {
                             Text("Haptic Feedback", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Medium)
-                            Text("Vibrate on move and piece capture", color = Color(0xFF94A3B8), fontSize = 11.sp)
+                            Text("Vibrate on move and piece capture", color = Color(0xFF94A3B8), fontSize = 13.sp)
                         }
                         Switch(
                             checked = profile?.hapticFeedback ?: true,
@@ -665,7 +665,7 @@ fun SettingsScreen(
                                 Text(
                                     text = "Invite friends & earn bonus rewards",
                                     color = Color(0xFF94A3B8),
-                                    fontSize = 11.5.sp
+                                    fontSize = 13.sp
                                 )
                             }
                         }
@@ -679,13 +679,13 @@ fun SettingsScreen(
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
                                 verticalAlignment = Alignment.CenterVertically
                             ) {
-                                Text("🎁", fontSize = 11.sp)
+                                Text("🎁", fontSize = 13.sp)
                                 Spacer(modifier = Modifier.width(4.dp))
                                 Text(
                                     text = "FREE REWARDS",
                                     color = Color(0xFF34D399),
                                     fontWeight = FontWeight.Bold,
-                                    fontSize = 10.sp
+                                    fontSize = 13.sp
                                 )
                             }
                         }
@@ -708,9 +708,9 @@ fun SettingsScreen(
                                 modifier = Modifier.padding(8.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                Text("Friend Gets", color = Color(0xFF94A3B8), fontSize = 10.sp)
+                                Text("Friend Gets", color = Color(0xFF94A3B8), fontSize = 13.sp)
                                 Spacer(modifier = Modifier.height(2.dp))
-                                Text("+250 🪙", color = Color(0xFF38BDF8), fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                                Text("+250 🪙", color = Color(0xFF38BDF8), fontWeight = FontWeight.Bold, fontSize = 14.sp)
                             }
                         }
 
@@ -724,9 +724,9 @@ fun SettingsScreen(
                                 modifier = Modifier.padding(8.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                Text("You Earn", color = Color(0xFF94A3B8), fontSize = 10.sp)
+                                Text("You Earn", color = Color(0xFF94A3B8), fontSize = 13.sp)
                                 Spacer(modifier = Modifier.height(2.dp))
-                                Text("+500 🪙", color = Color(0xFF34D399), fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                                Text("+500 🪙", color = Color(0xFF34D399), fontWeight = FontWeight.Bold, fontSize = 14.sp)
                             }
                         }
 
@@ -740,9 +740,9 @@ fun SettingsScreen(
                                 modifier = Modifier.padding(8.dp),
                                 horizontalAlignment = Alignment.CenterHorizontally
                             ) {
-                                Text("Invited", color = Color(0xFF94A3B8), fontSize = 10.sp)
+                                Text("Invited", color = Color(0xFF94A3B8), fontSize = 13.sp)
                                 Spacer(modifier = Modifier.height(2.dp))
-                                Text("$referralCount Friends", color = Color(0xFFFBBF24), fontWeight = FontWeight.Bold, fontSize = 12.sp)
+                                Text("$referralCount Friends", color = Color(0xFFFBBF24), fontWeight = FontWeight.Bold, fontSize = 14.sp)
                             }
                         }
                     }
@@ -767,7 +767,7 @@ fun SettingsScreen(
                                 Text(
                                     text = "YOUR REFERRAL CODE",
                                     color = Color(0xFF64748B),
-                                    fontSize = 10.sp,
+                                    fontSize = 13.sp,
                                     fontWeight = FontWeight.SemiBold,
                                     letterSpacing = 1.sp
                                 )
@@ -803,7 +803,7 @@ fun SettingsScreen(
                                 Text(
                                     text = "Copy",
                                     color = Color(0xFF38BDF8),
-                                    fontSize = 12.sp,
+                                    fontSize = 14.sp,
                                     fontWeight = FontWeight.Bold
                                 )
                             }
@@ -888,7 +888,7 @@ fun SettingsScreen(
                                 Text(
                                     text = "Friend referral code claimed! (+250 Tokens)",
                                     color = Color(0xFF34D399),
-                                    fontSize = 12.sp,
+                                    fontSize = 14.sp,
                                     fontWeight = FontWeight.Medium
                                 )
                             }
@@ -919,7 +919,7 @@ fun SettingsScreen(
                                     Text(
                                         text = "Have a Friend's Referral Code? Redeem here",
                                         color = Color(0xFFFDE68A),
-                                        fontSize = 12.sp,
+                                        fontSize = 14.sp,
                                         fontWeight = FontWeight.Medium
                                     )
                                 }
@@ -935,7 +935,7 @@ fun SettingsScreen(
                                 Text(
                                     text = "Redeem Friend's Code (+250 Tokens)",
                                     color = Color.White,
-                                    fontSize = 12.sp,
+                                    fontSize = 14.sp,
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Spacer(modifier = Modifier.height(8.dp))
@@ -946,7 +946,7 @@ fun SettingsScreen(
                                     OutlinedTextField(
                                         value = inputFriendCode,
                                         onValueChange = { inputFriendCode = it.uppercase() },
-                                        placeholder = { Text("e.g. CHESS-9821-XYZ", color = Color(0xFF64748B), fontSize = 12.sp) },
+                                        placeholder = { Text("e.g. CHESS-9821-XYZ", color = Color(0xFF64748B), fontSize = 14.sp) },
                                         singleLine = true,
                                         textStyle = TextStyle(color = Color.White, fontSize = 13.sp, fontFamily = FontFamily.Monospace),
                                         modifier = Modifier
@@ -980,7 +980,7 @@ fun SettingsScreen(
                                         contentPadding = androidx.compose.foundation.layout.PaddingValues(horizontal = 12.dp, vertical = 10.dp),
                                         modifier = Modifier.testTag("submit_referral_code_button")
                                     ) {
-                                        Text("Claim", color = Color.White, fontSize = 12.sp, fontWeight = FontWeight.Bold)
+                                        Text("Claim", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Bold)
                                     }
                                 }
                             }
@@ -1007,7 +1007,7 @@ fun SettingsScreen(
                                 Text(
                                     text = msg,
                                     color = if (isSuccess) Color(0xFFA7F3D0) else Color(0xFFFECDD3),
-                                    fontSize = 11.5.sp,
+                                    fontSize = 13.sp,
                                     modifier = Modifier.weight(1f)
                                 )
                                 IconButton(
@@ -1057,7 +1057,7 @@ fun SettingsScreen(
                                 "• Tactical Puzzles award +20 Tokens & +5 Rating Points on each solution.\n" +
                                 "• Share & Refer Program awards +500 Tokens per invited friend & +250 Tokens on redeeming a referral code.",
                         color = Color(0xFFCBD5E1),
-                        fontSize = 12.sp,
+                        fontSize = 14.sp,
                         lineHeight = 18.sp
                     )
                 }
