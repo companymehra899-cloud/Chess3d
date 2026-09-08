@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">Chess Online Game</string>
+    <string name="app_name">Chess 3D Arena</string>
+    <string name="privacy_policy_url">https://companymehra899-cloud.github.io/Chess3d/privacy-policy.html</string>
 </resources>

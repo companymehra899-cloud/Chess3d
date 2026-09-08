@@ -1,0 +1,31 @@
+Play Console Data safety answers for Chess 3D Arena
+
+Data collected:
+- User IDs: yes, local username and Firebase anonymous UID for online play
+- Game progress: yes, rating, wins, losses, puzzles, match history
+- Messages: yes, in-game chat during online matches
+- App activity: game interactions needed to play chess
+
+Data shared:
+- Other players in a match can see display name, rating, country, avatar, moves, and chat
+- Firebase/Google processes online matchmaking and game sync data
+
+Security:
+- Data is encrypted in transit (HTTPS) for online features
+- Users can request deletion by clearing app data or uninstalling
+- Passwords are hashed on device
+
+Not collected:
+- Location
+- Contacts
+- Photos
+- Files
+- Financial info
+- Health info
+- Advertising ID (do not collect)
+
+Ads: no
+In-app purchases: no
+Targeted advertising: no
+Data sold: no
+Children: not primarily directed at children

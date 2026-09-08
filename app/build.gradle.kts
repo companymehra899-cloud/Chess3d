@@ -1,4 +1,5 @@
 import com.google.gms.googleservices.GoogleServicesPlugin.MissingGoogleServicesStrategy
+import java.util.Properties
 
 plugins {
   alias(libs.plugins.android.application)
@@ -7,6 +8,12 @@ plugins {
   alias(libs.plugins.roborazzi)
   alias(libs.plugins.secrets)
   alias(libs.plugins.google.services)
+}
+
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+val keystoreProperties = Properties()
+if (keystorePropertiesFile.exists()) {
+  keystorePropertiesFile.inputStream().use { keystoreProperties.load(it) }
 }
 
 android {
@@ -18,24 +25,34 @@ android {
     minSdk = 24
     targetSdk = 36
     versionCode = 1
-    versionName = "1.0"
+    versionName = "1.0.0"
 
     testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
   }
 
   signingConfigs {
     create("release") {
-      val defaultKeystore = "${rootDir}/my-upload-key.jks"
-      val keystorePath = System.getenv("KEYSTORE_PATH") ?: defaultKeystore
-      val keystoreFile = file(keystorePath)
+      val configuredStore = keystoreProperties.getProperty("storeFile")
+      val keystoreFile = when {
+        !configuredStore.isNullOrBlank() -> rootProject.file(configuredStore)
+        System.getenv("KEYSTORE_PATH") != null -> file(System.getenv("KEYSTORE_PATH"))
+        else -> rootProject.file("my-upload-key.jks")
+      }
       if (keystoreFile.exists()) {
         storeFile = keystoreFile
-      } else {
-        storeFile = file("${rootDir}/debug.keystore")
+        storePassword =
+          keystoreProperties.getProperty("storePassword")
+            ?: System.getenv("STORE_PASSWORD")
+            ?: error("Missing storePassword in keystore.properties")
+        keyAlias =
+          keystoreProperties.getProperty("keyAlias")
+            ?: System.getenv("KEY_ALIAS")
+            ?: "chess3d"
+        keyPassword =
+          keystoreProperties.getProperty("keyPassword")
+            ?: System.getenv("KEY_PASSWORD")
+            ?: error("Missing keyPassword in keystore.properties")
       }
-      storePassword = System.getenv("STORE_PASSWORD") ?: "android"
-      keyAlias = System.getenv("KEY_ALIAS") ?: "androiddebugkey"
-      keyPassword = System.getenv("KEY_PASSWORD") ?: "android"
     }
     create("debugConfig") {
       storeFile = file("${rootDir}/debug.keystore")
@@ -51,7 +68,9 @@ android {
       isMinifyEnabled = true
       isShrinkResources = true
       proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-      signingConfig = signingConfigs.getByName("release")
+      if (signingConfigs.getByName("release").storeFile?.exists() == true) {
+        signingConfig = signingConfigs.getByName("release")
+      }
     }
     debug { signingConfig = signingConfigs.getByName("debugConfig") }
   }
@@ -107,7 +126,6 @@ dependencies {
   implementation(libs.androidx.room.runtime)
   // implementation(libs.coil.compose)
   // implementation(libs.converter.moshi)
-  implementation(libs.firebase.ai)
   implementation(libs.firebase.auth)
   implementation(libs.firebase.database)
   implementation(libs.kotlinx.coroutines.play.services)

@@ -110,6 +110,10 @@
 **/.env.*.local
 *.pem
 *.key
+keystore.properties
+*.jks
+!debug.keystore
+!my-upload-key.jks
 
 # Temporary files
 *.tmp

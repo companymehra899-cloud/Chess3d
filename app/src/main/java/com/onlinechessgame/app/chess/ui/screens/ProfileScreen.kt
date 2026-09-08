@@ -1,6 +1,7 @@
 package com.onlinechessgame.app.chess.ui.screens
 
 import android.content.Intent
+import android.net.Uri
 import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.expandVertically
@@ -891,7 +892,7 @@ fun ProfileScreen(
                                         fontWeight = FontWeight.Bold
                                     )
                                     Text(
-                                        text = "Offline local encryption, zero tracking & guest safety",
+                                        text = "How we store local accounts and online match data",
                                         color = Color(0xFFCBD5E1),
                                         fontSize = 13.sp,
                                         maxLines = 1
@@ -1796,48 +1797,63 @@ fun ChessPrivacyModalDialog(onDismiss: () -> Unit) {
                 ) {
                     item {
                         RuleInfoCard(
-                            title = "🔒 100% Offline Local Data Storage",
+                            title = "Local profile data",
                             icon = "💾",
                             accentColor = Color(0xFF38BDF8),
-                            description = "Your match history, ratings, solved tactical puzzles, unlocked avatars, and board themes are encrypted locally on your device via modern Room SQLite DB. No personal identifiable data is sold or shared."
+                            description = "Your username, hashed password, match history, rating, puzzles, avatars, and board themes stay on this device. We do not sell personal data."
                         )
                     }
                     item {
                         RuleInfoCard(
-                            title = "👤 Guest & Anonymous Safety",
+                            title = "Guest and online play",
                             icon = "🕶️",
                             accentColor = Color(0xFF10B981),
-                            description = "You are not required to provide personal phone numbers, contacts, or real email addresses. You can customize your player display name, country flag, and avatar at any time with complete freedom."
+                            description = "Guest play works without an email or phone number. Online matches use Firebase anonymous sign-in so the game can sync moves, timers, and in-game chat."
                         )
                     }
                     item {
                         RuleInfoCard(
-                            title = "⚔️ Fair Play & Anti-Cheat System",
+                            title = "Fair play",
                             icon = "⚖️",
                             accentColor = Color(0xFFF59E0B),
-                            description = "To ensure a rewarding competitive environment, games are evaluated by our deterministic heuristic engine to detect non-human external computational assistance and promote true sportsmanship."
+                            description = "Rated games are scored by the built-in chess engine. Do not use outside computer assistance during competitive matches."
                         )
                     }
                     item {
                         RuleInfoCard(
-                            title = "🎮 Audio & Haptic Controls",
+                            title = "Audio and haptics",
                             icon = "🎛️",
                             accentColor = Color(0xFFEC4899),
-                            description = "Audio playback and haptic vibration motors are strictly controlled by your preferences in the Profile settings menu and only activate upon deliberate piece moves."
+                            description = "Sound and vibration follow your Profile settings and only run on piece moves and game events."
                         )
                     }
                 }
 
                 Spacer(modifier = Modifier.height(12.dp))
 
-                // Close Button
+                val context = LocalContext.current
+                OutlinedButton(
+                    onClick = {
+                        val url = context.getString(R.string.privacy_policy_url)
+                        context.startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+                    },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.outlinedButtonColors(contentColor = Color(0xFF34D399)),
+                    border = BorderStroke(1.dp, Color(0xFF34D399)),
+                    shape = RoundedCornerShape(12.dp)
+                ) {
+                    Text("Open full privacy policy", fontWeight = FontWeight.Bold)
+                }
+
+                Spacer(modifier = Modifier.height(8.dp))
+
                 Button(
                     onClick = onDismiss,
                     modifier = Modifier.fillMaxWidth(),
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF059669)),
                     shape = RoundedCornerShape(12.dp)
                 ) {
-                    Text("Understood & Agreed", fontWeight = FontWeight.Bold)
+                    Text("Understood", fontWeight = FontWeight.Bold)
                 }
             }
         }

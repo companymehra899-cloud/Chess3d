@@ -1,0 +1,25 @@
+App name:
+Chess 3D Arena
+
+Short description (max 80 characters):
+Play 3D chess online with puzzles, bots, friends, and ranked matches.
+
+Full description:
+Chess 3D Arena is a 3D chess game for Android.
+
+Play ranked and casual games, solve puzzles, challenge a bot, and track your rating on the leaderboard.
+
+Features:
+- 3D chessboard and pieces
+- Online matchmaking
+- Bot games with multiple time controls
+- Daily-style puzzles
+- Friends, chat during games, and match history
+- Custom avatars, boards, and piece styles
+- Guest play or local username sign-in
+
+No ads. Built for players who want a clean chess experience.
+
+Category: Game > Board
+Content rating: PEGI 3 / Everyone
+Default language: English

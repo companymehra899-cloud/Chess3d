@@ -96,6 +96,9 @@ interface ChessDao {
     @Query("SELECT * FROM user_accounts WHERE username = :username LIMIT 1")
     suspend fun getAccountByUsername(username: String): UserAccountEntity?
 
+    @Query("UPDATE user_accounts SET passwordHash = :passwordHash WHERE username = :username")
+    suspend fun updateAccountPasswordHash(username: String, passwordHash: String)
+
     @Query("SELECT * FROM user_accounts ORDER BY createdAt DESC")
     suspend fun getAllAccounts(): List<UserAccountEntity>
 

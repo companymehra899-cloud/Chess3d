@@ -9,6 +9,7 @@ import com.onlinechessgame.app.chess.data.local.UserProfileEntity
 import com.onlinechessgame.app.chess.model.AvatarCategory
 import com.onlinechessgame.app.chess.model.AvatarItem
 import com.onlinechessgame.app.chess.model.AvatarRarity
+import java.security.MessageDigest
 import kotlinx.coroutines.flow.Flow
 
 class ChessRepository(private val dao: ChessDao) {
@@ -72,7 +73,7 @@ class ChessRepository(private val dao: ChessDao) {
         val newAccount = UserAccountEntity(
             username = key,
             displayName = cleanName,
-            passwordHash = password,
+            passwordHash = hashPassword(password),
             countryCode = countryCode,
             countryName = countryName,
             countryFlag = countryFlag,
@@ -121,8 +122,11 @@ class ChessRepository(private val dao: ChessDao) {
         }
         val account = dao.getAccountByUsername(key)
             ?: return Result.failure(Exception("Account '$cleanName' not found. Please Sign Up."))
-        if (account.passwordHash != password) {
+        if (!passwordMatches(password, account.passwordHash)) {
             return Result.failure(Exception("Incorrect password. Please try again."))
+        }
+        if (account.passwordHash == password) {
+            dao.updateAccountPasswordHash(key, hashPassword(password))
         }
 
         val profile = UserProfileEntity(
@@ -1773,5 +1777,15 @@ class ChessRepository(private val dao: ChessDao) {
                 )
             )
         }
+    }
+
+    private fun hashPassword(password: String): String {
+        val digest = MessageDigest.getInstance("SHA-256")
+        val hashed = digest.digest(password.toByteArray(Charsets.UTF_8))
+        return hashed.joinToString("") { byte -> "%02x".format(byte) }
+    }
+
+    private fun passwordMatches(password: String, stored: String): Boolean {
+        return stored == hashPassword(password) || stored == password
     }
 }

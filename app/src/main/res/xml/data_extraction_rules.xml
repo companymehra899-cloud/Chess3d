@@ -5,10 +5,9 @@
 -->
 <data-extraction-rules>
     <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
+        <exclude domain="database" path="chess_3d_database" />
+        <exclude domain="database" path="chess_3d_database-wal" />
+        <exclude domain="database" path="chess_3d_database-shm" />
     </cloud-backup>
     <!--
     <device-transfer>

@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "Chess Online Game"
+rootProject.name = "Chess 3D Arena"
 
 include(":app")

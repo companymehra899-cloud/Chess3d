@@ -3,6 +3,6 @@
     <item
         android:width="66dp"
         android:height="66dp"
-        android:drawable="@drawable/img_chess_app_icon"
+        android:drawable="@drawable/ic_launcher_foreground_art"
         android:gravity="center" />
 </layer-list>
