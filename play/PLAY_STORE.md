@@ -36,6 +36,17 @@ Copy `keystore.properties.example` to `keystore.properties` and fill in those pa
 3. Optional online play: add your Firebase `app/google-services.json`.
    Offline, bot, and puzzle play work without it.
 
+## Download APK from GitHub Actions
+
+Phone pe test karne ke liye:
+
+1. Open https://github.com/companymehra899-cloud/Chess3d/actions
+2. **Build Android APK** open karo
+3. Green tick ke baad **Artifacts** se `Chess3DArena-APK` download karo
+4. Zip se `Chess3DArena-1.0.0.apk` nikal ke phone pe install karo
+
+Details: `play/DOWNLOAD.md`
+
 ## Build the Android App Bundle
 
 In Android Studio:
