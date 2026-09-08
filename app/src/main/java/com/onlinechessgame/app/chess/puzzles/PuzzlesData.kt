@@ -88,7 +88,7 @@ object ChessPuzzlesRepository {
             title = "The Sovereign Fork",
             tacticTheme = "Knight Fork",
             difficulty = "Medium",
-            description = "Black's King and Queen are vulnerable. Jump your Knight into c7 to deliver a devastating royal fork!",
+            description = "Black's King and Queen are vulnerable. Jump your Knight to f6 to deliver a devastating royal fork!",
             initialTurn = PieceColor.WHITE,
             pieces = listOf(
                 Triple(Position(0, 4), PieceType.KING, PieceColor.BLACK), // e8
@@ -100,14 +100,8 @@ object ChessPuzzlesRepository {
             ),
             solutionSteps = listOf(
                 PuzzleStep(
-                    playerMoveFrom = Position(4, 4), // Ne4
-                    playerMoveTo = Position(2, 2),   // Nc6 or c7 check
-                    opponentReplyFrom = Position(0, 4),
-                    opponentReplyTo = Position(0, 5)
-                ),
-                PuzzleStep(
-                    playerMoveFrom = Position(2, 2),
-                    playerMoveTo = Position(1, 3)    // NxQd7 win queen!
+                    playerMoveFrom = Position(4, 4),
+                    playerMoveTo = Position(2, 5)
                 )
             )
         ),

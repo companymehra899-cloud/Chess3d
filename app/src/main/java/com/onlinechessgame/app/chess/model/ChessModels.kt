@@ -35,8 +35,12 @@ data class Position(val row: Int, val col: Int) {
 
     companion object {
         fun fromAlgebraic(alg: String): Position {
-            val col = alg[0] - 'a'
-            val row = 8 - alg[1].digitToInt()
+            require(alg.length >= 2) { "Algebraic notation must be like e4" }
+            val file = alg[0].lowercaseChar()
+            val rank = alg[1]
+            require(file in 'a'..'h' && rank in '1'..'8') { "Invalid square: $alg" }
+            val col = file - 'a'
+            val row = 8 - rank.digitToInt()
             return Position(row, col)
         }
     }

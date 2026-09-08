@@ -85,8 +85,14 @@ class ChessEngine {
     fun isSquareAttacked(pos: Position, byColor: PieceColor): Boolean {
         for (r in 0..7) {
             for (c in 0..7) {
-                val p = board[r][c]
-                if (p != null && p.color == byColor) {
+                val p = board[r][c] ?: continue
+                if (p.color != byColor) continue
+                if (p.type == PieceType.PAWN) {
+                    val forward = if (p.color == PieceColor.WHITE) -1 else 1
+                    if (r + forward == pos.row && abs(c - pos.col) == 1) {
+                        return true
+                    }
+                } else {
                     val candidateMoves = getPseudoLegalMoves(Position(r, c), considerCastling = false)
                     if (candidateMoves.any { it.to == pos }) {
                         return true
@@ -148,6 +154,8 @@ class ChessEngine {
     }
 
     fun getAllLegalMoves(color: PieceColor): List<Move> {
+        val savedTurn = currentTurn
+        currentTurn = color
         val all = mutableListOf<Move>()
         for (r in 0..7) {
             for (c in 0..7) {
@@ -157,6 +165,7 @@ class ChessEngine {
                 }
             }
         }
+        currentTurn = savedTurn
         return all
     }
 
@@ -417,50 +426,54 @@ class ChessEngine {
                 board[r][c]?.let { pieces.add(it) }
             }
         }
-        if (pieces.size <= 2) return true // K vs K
-        if (pieces.size == 3 && pieces.any { it.type == PieceType.BISHOP || it.type == PieceType.KNIGHT }) return true // KB vs K or KN vs K
+        val nonKings = pieces.filter { it.type != PieceType.KING }
+        if (nonKings.isEmpty()) return true
+        if (nonKings.size == 1 && (nonKings[0].type == PieceType.BISHOP || nonKings[0].type == PieceType.KNIGHT)) return true
+        if (nonKings.size == 2 &&
+            nonKings.all { it.type == PieceType.BISHOP } &&
+            nonKings[0].color != nonKings[1].color
+        ) {
+            val bishops = mutableListOf<Pair<Int, Int>>()
+            for (r in 0..7) {
+                for (c in 0..7) {
+                    val p = board[r][c]
+                    if (p != null && p.type == PieceType.BISHOP) {
+                        bishops.add(r to c)
+                    }
+                }
+            }
+            if (bishops.size == 2) {
+                val colorA = (bishops[0].first + bishops[0].second) % 2
+                val colorB = (bishops[1].first + bishops[1].second) % 2
+                if (colorA == colorB) return true
+            }
+        }
         return false
     }
 
-    // AI evaluation for online random opponent simulation
     fun computeBestMove(color: PieceColor, depth: Int = 2): Move? {
         val legalMoves = getAllLegalMoves(color)
         if (legalMoves.isEmpty()) return null
 
         var bestMove: Move? = null
-        var bestScore = if (color == PieceColor.WHITE) -100000 else 100000
-
-        // Shuffle slightly for natural human play variety
+        var bestScore = Int.MIN_VALUE
         val shuffledMoves = legalMoves.shuffled()
 
         for (move in shuffledMoves) {
-            // Immediate checkmate priority
-            val captured = move.capturedPiece
             var score = 0
-
+            val captured = move.capturedPiece
             if (captured != null) {
                 score += captured.type.value * 10
             }
             if (move.promotion == PieceType.QUEEN) {
                 score += 90
             }
-
-            // Center control
             if (move.to.row in 3..4 && move.to.col in 3..4) {
                 score += 3
             }
-
-            if (color == PieceColor.WHITE) {
-                if (score > bestScore) {
-                    bestScore = score
-                    bestMove = move
-                }
-            } else {
-                val blackScore = -score
-                if (blackScore < bestScore) {
-                    bestScore = blackScore
-                    bestMove = move
-                }
+            if (score > bestScore) {
+                bestScore = score
+                bestMove = move
             }
         }
 

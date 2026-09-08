@@ -368,7 +368,7 @@
     function squareAttacked(r, c, byColor) {
       const pawnDir = byColor === WHITE ? -1 : 1;
       for (const dc of [-1, 1]) {
-        const nr = r + pawnDir, nc = c + dc;
+        const nr = r - pawnDir, nc = c + dc;
         if (inBounds(nr, nc) && board[nr][nc] === byColor + 'P') return true;
       }
       const nOff = [[-2,-1],[-2,1],[-1,-2],[-1,2],[1,-2],[1,2],[2,-1],[2,1]];

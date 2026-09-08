@@ -189,6 +189,8 @@ class ChessViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _puzzleBoard = MutableStateFlow(ChessEngine())
     val puzzleBoard: StateFlow<ChessEngine> = _puzzleBoard.asStateFlow()
+    private val _puzzleRevision = MutableStateFlow(0)
+    val puzzleRevision: StateFlow<Int> = _puzzleRevision.asStateFlow()
 
     private val _puzzleSelectedPos = MutableStateFlow<Position?>(null)
     val puzzleSelectedPos: StateFlow<Position?> = _puzzleSelectedPos.asStateFlow()
@@ -629,7 +631,7 @@ class ChessViewModel(application: Application) : AndroidViewModel(application) {
         if (!success) return
 
         triggerHaptic()
-        updateGameUiFromEngine(lastMove = move)
+        updateGameUiFromEngine(lastMove = engine.moveHistory.lastOrNull() ?: move)
 
         // Play appropriate sound effect
         if (engine.gameStatus == GameStatus.WHITE_WON || engine.gameStatus == GameStatus.BLACK_WON) {
@@ -679,14 +681,15 @@ class ChessViewModel(application: Application) : AndroidViewModel(application) {
 
             if (_gameUiState.value.gameStatus != GameStatus.IN_PROGRESS) return@launch
 
-            val opponentMove = engine.computeBestMove(PieceColor.BLACK)
+            val opponentColor = _gameUiState.value.playerColor.opposite()
+            val opponentMove = engine.computeBestMove(opponentColor)
             if (opponentMove != null) {
                 val destinationPiece = engine.getPiece(opponentMove.to)
                 val isCapture = opponentMove.capturedPiece != null || destinationPiece != null || (opponentMove.piece.type == PieceType.PAWN && opponentMove.from.col != opponentMove.to.col)
 
                 engine.makeMove(opponentMove)
                 triggerHaptic()
-                updateGameUiFromEngine(lastMove = opponentMove)
+                updateGameUiFromEngine(lastMove = engine.moveHistory.lastOrNull() ?: opponentMove)
 
                 if (engine.gameStatus == GameStatus.WHITE_WON || engine.gameStatus == GameStatus.BLACK_WON) {
                     soundManager.playCheckmateSound()
@@ -980,6 +983,7 @@ class ChessViewModel(application: Application) : AndroidViewModel(application) {
         val pEngine = ChessEngine()
         pEngine.setupCustomPosition(p.pieces, p.initialTurn)
         _puzzleBoard.value = pEngine
+        _puzzleRevision.value++
     }
 
     fun nextPuzzle() {
@@ -1003,6 +1007,7 @@ class ChessViewModel(application: Application) : AndroidViewModel(application) {
                 val isCapture = destinationPiece != null
                 val move = Move(selected, pos, pEngine.getPiece(selected)!!)
                 pEngine.makeMove(move)
+                _puzzleRevision.value++
                 triggerHaptic()
 
                 if (isCapture) {
@@ -1011,7 +1016,6 @@ class ChessViewModel(application: Application) : AndroidViewModel(application) {
                     soundManager.playMoveSound()
                 }
 
-                // Check if opponent has response in puzzle
                 if (step.opponentReplyFrom != null && step.opponentReplyTo != null) {
                     viewModelScope.launch {
                         delay(600)
@@ -1019,6 +1023,7 @@ class ChessViewModel(application: Application) : AndroidViewModel(application) {
                         if (replyPiece != null) {
                             val replyCapture = pEngine.getPiece(step.opponentReplyTo) != null
                             pEngine.makeMove(Move(step.opponentReplyFrom, step.opponentReplyTo, replyPiece))
+                            _puzzleRevision.value++
                             if (replyCapture) soundManager.playCaptureSound() else soundManager.playMoveSound()
                         }
                     }

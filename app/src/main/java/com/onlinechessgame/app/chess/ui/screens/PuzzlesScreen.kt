@@ -53,6 +53,7 @@ fun PuzzlesScreen(
     val feedback by viewModel.puzzleFeedback.collectAsState()
     val isSolved by viewModel.puzzleSolved.collectAsState()
     val engine by viewModel.puzzleBoard.collectAsState()
+    val puzzleRevision by viewModel.puzzleRevision.collectAsState()
     val selectedPos by viewModel.puzzleSelectedPos.collectAsState()
     val legalMoves by viewModel.puzzleLegalMoves.collectAsState()
     val profile by viewModel.userProfile.collectAsState()
@@ -192,7 +193,7 @@ fun PuzzlesScreen(
 
         // 3D Vector Chess Board for Puzzles
         ChessBoard3D(
-            board = engine.board,
+            board = remember(puzzleRevision) { engine.board.map { it.copyOf() }.toTypedArray() },
             selectedPosition = selectedPos,
             legalMoves = legalMoves,
             lastMove = engine.moveHistory.lastOrNull(),
