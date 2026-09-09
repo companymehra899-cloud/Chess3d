@@ -24,7 +24,7 @@ data class UserProfileEntity(
     val selectedAvatarId: String = "champion_boy",
     val unlockedAvatarIds: String = "champion_boy,champion_girl,cool_guy,explorer_boy,scholar_girl,master_aarav,master_lukas,master_chloe,master_ethan,imperial_empress,cyber_valkyrie,celestial_queen,stylish_man_free,modern_woman_free,british_woman_free,simple_man_free,champion_man_free,fox_tactician,white_tiger,free_panda,free_golden_prince,free_royal_princess,free_brave_pawn,free_wise_owl,man_portrait_1,man_portrait_2,woman_portrait_1,woman_portrait_2,oil_india_boy,oil_africa_boy,oil_german_boy,oil_american_boy,oil_american_girl,oil_england_boy,oil_england_girl,oil_australia_boy,oil_australia_girl,oil_europe_boy,oil_europe_girl,custom_golden_king,custom_cyber_rook,custom_shadow_knight,custom_mystic_bishop,custom_cosmic_queen,custom_valiant_pawn",
     val customAvatarTitle: String = "The Strategist",
-    val boardTheme: String = "SIMPLE_GREEN_BUFF",
+    val boardTheme: String = "ISOMETRIC_TRUE_3D",
     val pieceStyle: String = "TOURNAMENT_PLASTIC",
     val pieceColor: String = "CLASSIC",
     val soundEffects: Boolean = true,

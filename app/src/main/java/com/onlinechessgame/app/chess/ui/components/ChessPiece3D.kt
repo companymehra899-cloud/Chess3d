@@ -167,37 +167,37 @@ private fun rememberPieceMaterials(
 
     val ivory = PieceMaterials(
         cylinder = listOf(
-            Color(0xFFC9A36A),
-            Color(0xFFF3E2C0),
-            Color(0xFFFFF8EC),
-            Color(0xFFE7D0A2),
-            Color(0xFFB8894A)
+            Color(0xFFB8894A),
+            Color(0xFFF0E0C2),
+            Color(0xFFFFF6E8),
+            Color(0xFFE2C89A),
+            Color(0xFF8A6232)
         ),
-        radialCenter = Color(0xFFFFFBF3),
-        radialEdge = Color(0xFFC4A06A),
-        groove = Color(0xFFA67C42),
-        specular = Color(0xE6FFFFFF),
+        radialCenter = Color(0xFFFFF8EC),
+        radialEdge = Color(0xFFB8894A),
+        groove = Color(0xFF8A6232),
+        specular = Color(0xCCFFFFFF),
         rim = Color(0x66FFFFFF),
-        felt = Color(0xFF2F6B46),
-        outline = Color(0xFF8A6A3A),
+        felt = Color(0xFF2A160D),
+        outline = Color(0xFF735A39),
         grain = Color(0x33A67C42),
-        accent = Color(0xFFF8E7C4)
+        accent = Color(0xFFF0E0C2)
     )
     val walnut = PieceMaterials(
         cylinder = listOf(
-            Color(0xFF1A0E08),
-            Color(0xFF5A3318),
-            Color(0xFF8A562C),
-            Color(0xFF3E2210),
-            Color(0xFF120A06)
+            Color(0xFF120804),
+            Color(0xFF2A1810),
+            Color(0xFF4A2A18),
+            Color(0xFF1A100A),
+            Color(0xFF0B1112)
         ),
-        radialCenter = Color(0xFFA06A38),
-        radialEdge = Color(0xFF24140C),
-        groove = Color(0xFF1A0C08),
-        specular = Color(0x99F6E2C4),
-        rim = Color(0x66C4A06A),
-        felt = Color(0xFF1F3D2C),
-        outline = Color(0xFF120804),
+        radialCenter = Color(0xFF5A3318),
+        radialEdge = Color(0xFF120804),
+        groove = Color(0xFF0B1112),
+        specular = Color(0x66D8A85F),
+        rim = Color(0x44D8A85F),
+        felt = Color(0xFF1A100A),
+        outline = Color(0xFF0B1112),
         grain = Color(0x44C4A074),
         accent = Color(0xFF6B4224)
     )

@@ -69,11 +69,11 @@ enum class BoardThemeStyle(
         id = "SIMPLE_WOOD_MAPLE",
         title = "Classic Maple & Walnut",
         subtitle = "Natural Tournament Wood (Simple)",
-        lightSquare = Color(0xFFF0D9B5),
-        darkSquare = Color(0xFFB58863),
-        frameStart = Color(0xFF4A3728),
-        frameEnd = Color(0xFF2D1F16),
-        labelColor = Color(0xFFFDE68A),
+        lightSquare = Color(0xFFE5C995),
+        darkSquare = Color(0xFF70472A),
+        frameStart = Color(0xFF6E3F20),
+        frameEnd = Color(0xFF2A160D),
+        labelColor = Color(0xFFE4BB6C),
         isSimple = true
     ),
     SIMPLE_BLUE_ICE(
@@ -101,11 +101,11 @@ enum class BoardThemeStyle(
         id = "WALNUT_3D",
         title = "Royal Walnut 3D",
         subtitle = "Deep Walnut & Amber",
-        lightSquare = Color(0xFFE8D4B4),
-        darkSquare = Color(0xFF8F5D38),
-        frameStart = Color(0xFF382314),
-        frameEnd = Color(0xFF1E120A),
-        labelColor = Color(0xFFD4AF37)
+        lightSquare = Color(0xFFE5C995),
+        darkSquare = Color(0xFF70472A),
+        frameStart = Color(0xFF6E3F20),
+        frameEnd = Color(0xFF2A160D),
+        labelColor = Color(0xFFE4BB6C)
     ),
     CYBER_3D(
         id = "CYBER_3D",
@@ -149,13 +149,13 @@ enum class BoardThemeStyle(
     ),
     ISOMETRIC_TRUE_3D(
         id = "ISOMETRIC_TRUE_3D",
-        title = "True 3D Isometric",
-        subtitle = "Walnut table, ivory & ebony pieces",
-        lightSquare = Color(0xFFD7B48A),
-        darkSquare = Color(0xFF6D4428),
-        frameStart = Color(0xFF5A3820),
-        frameEnd = Color(0xFF3B2414),
-        labelColor = Color(0xFFE2B777)
+        title = "Studio Wood 3D",
+        subtitle = "Mahogany table, cream & dark wood pieces",
+        lightSquare = Color(0xFFE5C995),
+        darkSquare = Color(0xFF70472A),
+        frameStart = Color(0xFF6E3F20),
+        frameEnd = Color(0xFF2A160D),
+        labelColor = Color(0xFFE4BB6C)
     );
 
     companion object {
@@ -163,7 +163,7 @@ enum class BoardThemeStyle(
         const val ISOMETRIC_ROTATION_Z = 45f
 
         fun fromKey(key: String?): BoardThemeStyle {
-            return entries.find { it.id == key || it.name == key } ?: SIMPLE_GREEN_BUFF
+            return entries.find { it.id == key || it.name == key } ?: ISOMETRIC_TRUE_3D
         }
     }
 }
@@ -176,7 +176,7 @@ fun ChessBoard3D(
     lastMove: Move?,
     isCheck: Boolean,
     kingInCheckPos: Position?,
-    boardTheme: BoardThemeStyle = BoardThemeStyle.SIMPLE_GREEN_BUFF,
+    boardTheme: BoardThemeStyle = BoardThemeStyle.ISOMETRIC_TRUE_3D,
     pieceStyle: String = "TOURNAMENT_PLASTIC",
     pieceColorTheme: String = "CLASSIC",
     showCoordinates: Boolean = false,
@@ -193,7 +193,7 @@ fun ChessBoard3D(
             .fillMaxWidth()
             .widthIn(max = AppSpace.boardMax)
             .aspectRatio(1f)
-            .shadow(16.dp, RoundedCornerShape(12.dp))
+            .shadow(22.dp, RoundedCornerShape(10.dp))
             .graphicsLayer {
                 if (isometric) {
                     rotationX = boardRotationX
@@ -209,47 +209,57 @@ fun ChessBoard3D(
             modifier = Modifier
                 .fillMaxSize()
                 .background(
-                    Brush.verticalGradient(
-                        colors = listOf(boardTheme.frameStart, boardTheme.frameEnd)
+                    Brush.linearGradient(
+                        colors = listOf(
+                            boardTheme.frameStart,
+                            Color(0xFF8B5428),
+                            boardTheme.frameEnd
+                        )
                     )
                 )
-                .padding(4.dp)
+                .padding(if (isometric) 14.dp else 6.dp)
         ) {
-            // Outer molded plastic tournament bevel frame canvas
             Canvas(modifier = Modifier.fillMaxSize()) {
                 val w = size.width
                 val h = size.height
-                val cornerRadius = androidx.compose.ui.geometry.CornerRadius(12.dp.toPx())
-                
-                // Outer highlight
+                val cornerRadius = androidx.compose.ui.geometry.CornerRadius(8.dp.toPx())
+                val rim = 10.dp.toPx()
+
                 drawRoundRect(
-                    brush = Brush.linearGradient(
-                        colors = listOf(Color(0x80FFFFFF), Color(0x20FFFFFF)),
-                        start = Offset(0f, 0f),
-                        end = Offset(w/10, h/10)
-                    ),
+                    color = Color(0xFF2A160D),
                     size = Size(w, h),
-                    cornerRadius = cornerRadius,
-                    style = Stroke(width = 6.dp.toPx())
+                    cornerRadius = cornerRadius
                 )
-                // Inner shadow
+                drawRoundRect(
+                    color = Color(0xFF8B5428),
+                    topLeft = Offset(rim * 0.18f, rim * 0.18f),
+                    size = Size(w - rim * 0.36f, h - rim * 0.36f),
+                    cornerRadius = cornerRadius,
+                    style = Stroke(width = rim)
+                )
                 drawRoundRect(
                     brush = Brush.linearGradient(
-                        colors = listOf(Color(0x10000000), Color(0x50000000)),
-                        start = Offset(w - w/10, h - h/10),
-                        end = Offset(w, h)
+                        colors = listOf(Color(0x66E4BB6C), Color(0x22000000)),
+                        start = Offset(0f, 0f),
+                        end = Offset(w * 0.35f, h * 0.35f)
                     ),
                     size = Size(w, h),
                     cornerRadius = cornerRadius,
-                    style = Stroke(width = 6.dp.toPx())
+                    style = Stroke(width = 5.dp.toPx())
+                )
+                drawRoundRect(
+                    color = Color(0x66120804),
+                    topLeft = Offset(rim, rim),
+                    size = Size(w - rim * 2f, h - rim * 2f),
+                    cornerRadius = androidx.compose.ui.geometry.CornerRadius(4.dp.toPx()),
+                    style = Stroke(width = 3.dp.toPx())
                 )
             }
 
-            // Central Board Grid with coordinates
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(3.5.dp)
+                    .padding(if (isometric) 8.dp else 3.5.dp)
             ) {
                 Column(
                     modifier = Modifier
@@ -271,7 +281,9 @@ fun ChessBoard3D(
                                 val piece = board[actualRow][actualCol]
                                 
                                 val baseSquareColor = if (isLight) boardTheme.lightSquare else boardTheme.darkSquare
-                                val isWoodTheme = boardTheme.id.contains("WOOD") || boardTheme.id.contains("MARSHALL") || boardTheme.id.contains("WALNUT")
+                                val isWoodTheme = !boardTheme.id.contains("CYBER") &&
+                                    !boardTheme.id.contains("BLUE") &&
+                                    !boardTheme.id.contains("MIDNIGHT")
                                 
                                 ChessSquareView(
                                     position = pos,
@@ -405,17 +417,15 @@ private fun ChessSquareView(
                 style = Stroke(width = 2.5f)
             )
 
-            // Last move highlight (soft emerald tint)
             if (isLastMoveSquare) {
-                drawRect(color = Color(0x4410B981))
+                drawRect(color = Color(0x66B5854C))
             }
 
-            // Selected piece highlight (golden amber aura)
             if (isSelected) {
-                drawRect(color = Color(0x66F59E0B))
+                drawRect(color = Color(0xAAE1B866))
                 drawRect(
-                    color = Color(0xFFF59E0B),
-                    style = Stroke(width = 3f)
+                    color = Color(0xFFE4BB6C),
+                    style = Stroke(width = 3.2f)
                 )
             }
 
@@ -432,29 +442,28 @@ private fun ChessSquareView(
 
             // Move Target Indicators
             if (isMoveTarget && !isCaptureTarget) {
-                // Circular 3D glowing dot for empty legal moves
                 drawCircle(
                     brush = Brush.radialGradient(
-                        colors = listOf(Color(0xFF38BDF8), Color(0x880284C7)),
+                        colors = listOf(Color(0xFFE4BB6C), Color(0xFFBD7D2E)),
                         center = Offset(w / 2f, h / 2f),
-                        radius = w * 0.18f
+                        radius = w * 0.16f
                     ),
-                    radius = w * 0.16f,
+                    radius = w * 0.14f,
                     center = Offset(w / 2f, h / 2f)
                 )
                 drawCircle(
-                    color = Color(0xFFFFFFFF),
-                    radius = w * 0.06f,
-                    center = Offset(w / 2f, h / 2f)
+                    color = Color(0x66E1B866),
+                    radius = w * 0.20f,
+                    center = Offset(w / 2f, h / 2f),
+                    style = Stroke(width = 2.2f)
                 )
             } else if (isCaptureTarget) {
-                // 3D Corner Bracket Rings for Captures
-                val ringRadius = w * 0.40f
+                val ringRadius = w * 0.38f
                 drawCircle(
-                    color = Color(0xFFEF4444),
+                    color = Color(0xFFE4BB6C),
                     radius = ringRadius,
                     center = Offset(w / 2f, h / 2f),
-                    style = Stroke(width = 3.5f, cap = StrokeCap.Round)
+                    style = Stroke(width = 3.2f, cap = StrokeCap.Round)
                 )
             }
         }
