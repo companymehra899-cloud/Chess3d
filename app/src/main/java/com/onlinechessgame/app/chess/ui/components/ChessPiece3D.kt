@@ -167,37 +167,37 @@ private fun rememberPieceMaterials(
 
     val ivory = PieceMaterials(
         cylinder = listOf(
-            Color(0xFFB8894A),
-            Color(0xFFF0E0C2),
-            Color(0xFFFFF6E8),
-            Color(0xFFE2C89A),
-            Color(0xFF8A6232)
+            Color(0xFFD7C4A3),
+            Color(0xFFF6EBD6),
+            Color(0xFFFFFBF3),
+            Color(0xFFE8D7B8),
+            Color(0xFFC4A97A)
         ),
-        radialCenter = Color(0xFFFFF8EC),
-        radialEdge = Color(0xFFB8894A),
-        groove = Color(0xFF8A6232),
+        radialCenter = Color(0xFFFFFBF3),
+        radialEdge = Color(0xFFD7C4A3),
+        groove = Color(0xFFB89B6A),
         specular = Color(0xCCFFFFFF),
         rim = Color(0x66FFFFFF),
-        felt = Color(0xFF2A160D),
-        outline = Color(0xFF735A39),
-        grain = Color(0x33A67C42),
-        accent = Color(0xFFF0E0C2)
+        felt = Color(0xFF4A5A3A),
+        outline = Color(0xFFA88B5A),
+        grain = Color(0x22A88B5A),
+        accent = Color(0xFFF6EBD6)
     )
     val walnut = PieceMaterials(
         cylinder = listOf(
-            Color(0xFF120804),
-            Color(0xFF2A1810),
-            Color(0xFF4A2A18),
-            Color(0xFF1A100A),
-            Color(0xFF0B1112)
+            Color(0xFF1C1A18),
+            Color(0xFF3A342E),
+            Color(0xFF5A5248),
+            Color(0xFF2A2622),
+            Color(0xFF141210)
         ),
-        radialCenter = Color(0xFF5A3318),
-        radialEdge = Color(0xFF120804),
-        groove = Color(0xFF0B1112),
-        specular = Color(0x66D8A85F),
-        rim = Color(0x44D8A85F),
-        felt = Color(0xFF1A100A),
-        outline = Color(0xFF0B1112),
+        radialCenter = Color(0xFF6A6258),
+        radialEdge = Color(0xFF1C1A18),
+        groove = Color(0xFF141210),
+        specular = Color(0x55F6EBD6),
+        rim = Color(0x33F6EBD6),
+        felt = Color(0xFF2A3324),
+        outline = Color(0xFF141210),
         grain = Color(0x44C4A074),
         accent = Color(0xFF6B4224)
     )

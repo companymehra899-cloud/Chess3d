@@ -426,7 +426,7 @@ fun ProfileScreen(
         item {
             val activePieceColorKey = profile?.pieceColor ?: "CLASSIC"
             val activePieceStyleKey = profile?.pieceStyle ?: "TOURNAMENT_PLASTIC"
-            val activeBoardThemeKey = profile?.boardTheme ?: "ISOMETRIC_TRUE_3D"
+            val activeBoardThemeKey = profile?.boardTheme ?: "SIMPLE_GREEN_BUFF"
 
             val currentPieceColor = ChessPieceColorTheme.fromKey(activePieceColorKey)
             val currentPieceStyle = ChessPieceStyle.entries.find { it.id == activePieceStyleKey }
@@ -1477,7 +1477,7 @@ fun ProfileScreen(
     // Chess Board Theme Modal Dialog (Normal & 3D Boards)
     if (showBoardThemeDialog) {
         ChessBoardThemeModalDialog(
-            currentThemeId = profile?.boardTheme ?: "ISOMETRIC_TRUE_3D",
+            currentThemeId = profile?.boardTheme ?: "SIMPLE_GREEN_BUFF",
             onSelectTheme = { id -> viewModel.updateBoardTheme(id) },
             onDismiss = { showBoardThemeDialog = false }
         )

@@ -44,8 +44,8 @@ class ChessRepository(private val dao: ChessDao) {
                 selectedAvatarId = "man_portrait_1"
             )
             dao.insertOrUpdateProfile(profile)
-        } else if (profile.boardTheme == "SIMPLE_GREEN_BUFF") {
-            profile = profile.copy(boardTheme = "ISOMETRIC_TRUE_3D")
+        } else if (profile.boardTheme == "ISOMETRIC_TRUE_3D" || profile.boardTheme == "WALNUT_3D") {
+            profile = profile.copy(boardTheme = "SIMPLE_GREEN_BUFF")
             dao.insertOrUpdateProfile(profile)
         }
         seedDefaultFriendsAndHistoryIfEmpty()

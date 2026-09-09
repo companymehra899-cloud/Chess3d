@@ -56,24 +56,24 @@ enum class BoardThemeStyle(
 ) {
     SIMPLE_GREEN_BUFF(
         id = "SIMPLE_GREEN_BUFF",
-        title = "Tournament Green & Buff",
-        subtitle = "Standard Club Vinyl (Simple)",
-        lightSquare = Color(0xFFEEEED2),
-        darkSquare = Color(0xFF769656),
-        frameStart = Color(0xFF2C3E25),
-        frameEnd = Color(0xFF1E2B1A),
-        labelColor = Color(0xFFF1F5F9),
+        title = "Sage & Cream",
+        subtitle = "Clean tournament board",
+        lightSquare = Color(0xFFF3E2C0),
+        darkSquare = Color(0xFF6A994E),
+        frameStart = Color(0xFF3D4A34),
+        frameEnd = Color(0xFF2A3324),
+        labelColor = Color(0xFFF8F1E3),
         isSimple = true
     ),
     SIMPLE_WOOD_MAPLE(
         id = "SIMPLE_WOOD_MAPLE",
-        title = "Classic Maple & Walnut",
-        subtitle = "Natural Tournament Wood (Simple)",
-        lightSquare = Color(0xFFE5C995),
-        darkSquare = Color(0xFF70472A),
-        frameStart = Color(0xFF6E3F20),
-        frameEnd = Color(0xFF2A160D),
-        labelColor = Color(0xFFE4BB6C),
+        title = "Warm Maple",
+        subtitle = "Soft wood, simple look",
+        lightSquare = Color(0xFFF4E1C1),
+        darkSquare = Color(0xFFC0895A),
+        frameStart = Color(0xFF6B4A32),
+        frameEnd = Color(0xFF4A3222),
+        labelColor = Color(0xFFF8E7C8),
         isSimple = true
     ),
     SIMPLE_BLUE_ICE(
@@ -163,7 +163,7 @@ enum class BoardThemeStyle(
         const val ISOMETRIC_ROTATION_Z = 45f
 
         fun fromKey(key: String?): BoardThemeStyle {
-            return entries.find { it.id == key || it.name == key } ?: ISOMETRIC_TRUE_3D
+            return entries.find { it.id == key || it.name == key } ?: SIMPLE_GREEN_BUFF
         }
     }
 }
@@ -176,7 +176,7 @@ fun ChessBoard3D(
     lastMove: Move?,
     isCheck: Boolean,
     kingInCheckPos: Position?,
-    boardTheme: BoardThemeStyle = BoardThemeStyle.ISOMETRIC_TRUE_3D,
+    boardTheme: BoardThemeStyle = BoardThemeStyle.SIMPLE_GREEN_BUFF,
     pieceStyle: String = "TOURNAMENT_PLASTIC",
     pieceColorTheme: String = "CLASSIC",
     showCoordinates: Boolean = false,
@@ -193,7 +193,7 @@ fun ChessBoard3D(
             .fillMaxWidth()
             .widthIn(max = AppSpace.boardMax)
             .aspectRatio(1f)
-            .shadow(22.dp, RoundedCornerShape(10.dp))
+            .shadow(10.dp, RoundedCornerShape(16.dp))
             .graphicsLayer {
                 if (isometric) {
                     rotationX = boardRotationX
@@ -210,48 +210,24 @@ fun ChessBoard3D(
                 .fillMaxSize()
                 .background(
                     Brush.linearGradient(
-                        colors = listOf(
-                            boardTheme.frameStart,
-                            Color(0xFF8B5428),
-                            boardTheme.frameEnd
-                        )
-                    )
+                        colors = listOf(boardTheme.frameStart, boardTheme.frameEnd)
+                    ),
+                    shape = RoundedCornerShape(16.dp)
                 )
-                .padding(if (isometric) 14.dp else 6.dp)
+                .padding(if (isometric) 12.dp else 8.dp)
         ) {
             Canvas(modifier = Modifier.fillMaxSize()) {
                 val w = size.width
                 val h = size.height
-                val cornerRadius = androidx.compose.ui.geometry.CornerRadius(8.dp.toPx())
-                val rim = 10.dp.toPx()
-
-                drawRoundRect(
-                    color = Color(0xFF2A160D),
-                    size = Size(w, h),
-                    cornerRadius = cornerRadius
-                )
-                drawRoundRect(
-                    color = Color(0xFF8B5428),
-                    topLeft = Offset(rim * 0.18f, rim * 0.18f),
-                    size = Size(w - rim * 0.36f, h - rim * 0.36f),
-                    cornerRadius = cornerRadius,
-                    style = Stroke(width = rim)
-                )
+                val cornerRadius = androidx.compose.ui.geometry.CornerRadius(12.dp.toPx())
                 drawRoundRect(
                     brush = Brush.linearGradient(
-                        colors = listOf(Color(0x66E4BB6C), Color(0x22000000)),
+                        colors = listOf(Color(0x33FFFFFF), Color(0x22000000)),
                         start = Offset(0f, 0f),
-                        end = Offset(w * 0.35f, h * 0.35f)
+                        end = Offset(w, h)
                     ),
                     size = Size(w, h),
                     cornerRadius = cornerRadius,
-                    style = Stroke(width = 5.dp.toPx())
-                )
-                drawRoundRect(
-                    color = Color(0x66120804),
-                    topLeft = Offset(rim, rim),
-                    size = Size(w - rim * 2f, h - rim * 2f),
-                    cornerRadius = androidx.compose.ui.geometry.CornerRadius(4.dp.toPx()),
                     style = Stroke(width = 3.dp.toPx())
                 )
             }
@@ -259,7 +235,7 @@ fun ChessBoard3D(
             Box(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(if (isometric) 8.dp else 3.5.dp)
+                    .padding(2.dp)
             ) {
                 Column(
                     modifier = Modifier
@@ -281,9 +257,9 @@ fun ChessBoard3D(
                                 val piece = board[actualRow][actualCol]
                                 
                                 val baseSquareColor = if (isLight) boardTheme.lightSquare else boardTheme.darkSquare
-                                val isWoodTheme = !boardTheme.id.contains("CYBER") &&
-                                    !boardTheme.id.contains("BLUE") &&
-                                    !boardTheme.id.contains("MIDNIGHT")
+                                val isWoodTheme = boardTheme.id.contains("WOOD") ||
+                                    boardTheme.id.contains("WALNUT") ||
+                                    boardTheme.id.contains("MARSHALL")
                                 
                                 ChessSquareView(
                                     position = pos,
@@ -418,15 +394,11 @@ private fun ChessSquareView(
             )
 
             if (isLastMoveSquare) {
-                drawRect(color = Color(0x66B5854C))
+                drawRect(color = Color(0x66C9D45D))
             }
 
             if (isSelected) {
-                drawRect(color = Color(0xAAE1B866))
-                drawRect(
-                    color = Color(0xFFE4BB6C),
-                    style = Stroke(width = 3.2f)
-                )
+                drawRect(color = Color(0x88F4D35E))
             }
 
             // King in check indicator (crimson alert radial pulse)
@@ -443,27 +415,16 @@ private fun ChessSquareView(
             // Move Target Indicators
             if (isMoveTarget && !isCaptureTarget) {
                 drawCircle(
-                    brush = Brush.radialGradient(
-                        colors = listOf(Color(0xFFE4BB6C), Color(0xFFBD7D2E)),
-                        center = Offset(w / 2f, h / 2f),
-                        radius = w * 0.16f
-                    ),
-                    radius = w * 0.14f,
+                    color = Color(0x662A3324),
+                    radius = w * 0.13f,
                     center = Offset(w / 2f, h / 2f)
                 )
-                drawCircle(
-                    color = Color(0x66E1B866),
-                    radius = w * 0.20f,
-                    center = Offset(w / 2f, h / 2f),
-                    style = Stroke(width = 2.2f)
-                )
             } else if (isCaptureTarget) {
-                val ringRadius = w * 0.38f
                 drawCircle(
-                    color = Color(0xFFE4BB6C),
-                    radius = ringRadius,
+                    color = Color(0xAA2A3324),
+                    radius = w * 0.42f,
                     center = Offset(w / 2f, h / 2f),
-                    style = Stroke(width = 3.2f, cap = StrokeCap.Round)
+                    style = Stroke(width = 4f, cap = StrokeCap.Round)
                 )
             }
         }

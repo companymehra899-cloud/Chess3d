@@ -273,7 +273,7 @@ fun SettingsScreen(
 
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         for (themeStyle in simpleBoards) {
-                            val isSelected = (profile?.boardTheme ?: "ISOMETRIC_TRUE_3D") == themeStyle.id
+                            val isSelected = (profile?.boardTheme ?: "SIMPLE_GREEN_BUFF") == themeStyle.id
                             Surface(
                                 shape = RoundedCornerShape(12.dp),
                                 color = if (isSelected) Color(0xFF0F172A) else Color(0xFF131D31),
@@ -348,7 +348,7 @@ fun SettingsScreen(
 
                     Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
                         for (themeStyle in luxuryBoards) {
-                            val isSelected = (profile?.boardTheme ?: "ISOMETRIC_TRUE_3D") == themeStyle.id || (profile?.boardTheme ?: "") == themeStyle.name
+                            val isSelected = (profile?.boardTheme ?: "SIMPLE_GREEN_BUFF") == themeStyle.id || (profile?.boardTheme ?: "") == themeStyle.name
                             val isTrue3d = themeStyle.id == BoardThemeStyle.ISOMETRIC_TRUE_3D.id
                             Surface(
                                 shape = RoundedCornerShape(12.dp),

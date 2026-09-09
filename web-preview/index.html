@@ -7,17 +7,17 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Inter:wght@400;500;600;700&display=swap');
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html, body { width: 100%; height: 100%; overflow: hidden; background: #0a0b0e; }
-    body { font-family: Inter, system-ui, sans-serif; color: #f5f0e8; }
+    html, body { width: 100%; height: 100%; overflow: hidden; background: #1c2418; }
+    body { font-family: Inter, system-ui, sans-serif; color: #f8f1e3; }
     #app {
       width: 100%; height: 100%; position: relative;
-      background: radial-gradient(ellipse 80% 60% at 50% 42%, #2a241c 0%, #12110f 48%, #070708 100%);
+      background: radial-gradient(ellipse 80% 60% at 50% 42%, #3d4a34 0%, #243024 48%, #1c2418 100%);
     }
     canvas { display: block; width: 100%; height: 100%; }
     .title {
       position: absolute; top: 22px; left: 0; right: 0; text-align: center;
       font-family: Cinzel, serif; font-size: clamp(22px, 3.4vw, 42px);
-      letter-spacing: 0.22em; font-weight: 700; color: #f4efe6;
+      letter-spacing: 0.22em; font-weight: 700; color: #f8f1e3;
       text-shadow: 0 2px 18px rgba(0,0,0,0.55); pointer-events: none; z-index: 4;
     }
     .hud {
@@ -35,8 +35,8 @@
     .avatar img { width: 100%; height: 100%; object-fit: cover; }
     .meta { display: flex; flex-direction: column; gap: 2px; }
     .name { font-size: 12px; letter-spacing: 0.14em; font-weight: 600; color: rgba(255,255,255,0.88); }
-    .timer { font-size: 18px; font-weight: 700; letter-spacing: 0.08em; color: #f3c96b; font-variant-numeric: tabular-nums; }
-    .player.right .timer { color: #d8d4cc; }
+    .timer { font-size: 18px; font-weight: 700; letter-spacing: 0.08em; color: #f4d35e; font-variant-numeric: tabular-nums; }
+    .player.right .timer { color: #e8dcc8; }
     .nav {
       position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%);
       display: flex; gap: 28px; padding: 10px 22px; border-radius: 18px;
@@ -55,14 +55,14 @@
     }
     .status {
       position: absolute; top: 128px; left: 0; right: 0; text-align: center;
-      font-size: 13px; letter-spacing: 0.16em; color: rgba(243,201,107,0.9);
+      font-size: 13px; letter-spacing: 0.16em; color: rgba(244,211,94,0.9);
       z-index: 4; pointer-events: none; min-height: 18px;
     }
   </style>
 </head>
 <body>
   <div id="app">
-    <div class="title">3D ISOMETRIC CHESS</div>
+      <div class="title">CHESS 3D ARENA</div>
     <div class="hud">
       <div class="player">
         <div class="avatar"><img alt="you" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 80 80'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop stop-color='%23c9a06a'/%3E%3Cstop offset='1' stop-color='%236b4a2a'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='40' cy='40' r='40' fill='%231a1510'/%3E%3Ccircle cx='40' cy='30' r='14' fill='url(%23g)'/%3E%3Cellipse cx='40' cy='64' rx='20' ry='16' fill='url(%23g)'/%3E%3C/svg%3E" /></div>
@@ -170,23 +170,23 @@
     rim.position.set(0, 16, 2);
     scene.add(rim);
 
-    const woodLight = new THREE.MeshStandardMaterial({ color: 0xd7b48a, roughness: 0.42, metalness: 0.04 });
-    const woodDark = new THREE.MeshStandardMaterial({ color: 0x6d4428, roughness: 0.48, metalness: 0.05 });
-    const frameMat = new THREE.MeshStandardMaterial({ color: 0x5a3820, roughness: 0.5, metalness: 0.08 });
-    const rimMat = new THREE.MeshStandardMaterial({ color: 0x3b2414, roughness: 0.55, metalness: 0.06 });
-    const ivory = new THREE.MeshStandardMaterial({ color: 0xf3e3c4, roughness: 0.32, metalness: 0.08 });
-    const ebony = new THREE.MeshStandardMaterial({ color: 0x2a2624, roughness: 0.38, metalness: 0.12 });
+    const woodLight = new THREE.MeshStandardMaterial({ color: 0xf3e2c0, roughness: 0.55, metalness: 0.02 });
+    const woodDark = new THREE.MeshStandardMaterial({ color: 0x6a994e, roughness: 0.58, metalness: 0.03 });
+    const frameMat = new THREE.MeshStandardMaterial({ color: 0x3d4a34, roughness: 0.5, metalness: 0.04 });
+    const rimMat = new THREE.MeshStandardMaterial({ color: 0x2a3324, roughness: 0.48, metalness: 0.04 });
+    const ivory = new THREE.MeshStandardMaterial({ color: 0xf6ebd6, roughness: 0.28, metalness: 0.04 });
+    const ebony = new THREE.MeshStandardMaterial({ color: 0x3a342e, roughness: 0.36, metalness: 0.08 });
 
     const boardRoot = new THREE.Group();
     scene.add(boardRoot);
 
-    const table = new THREE.Mesh(new THREE.BoxGeometry(11.4, 0.55, 11.4), rimMat);
-    table.position.y = -0.42;
+    const table = new THREE.Mesh(new THREE.BoxGeometry(9.4, 0.32, 9.4), rimMat);
+    table.position.y = -0.2;
     table.castShadow = true;
     table.receiveShadow = true;
     boardRoot.add(table);
-    const inner = new THREE.Mesh(new THREE.BoxGeometry(9.05, 0.18, 9.05), frameMat);
-    inner.position.y = -0.08;
+    const inner = new THREE.Mesh(new THREE.BoxGeometry(8.55, 0.14, 8.55), frameMat);
+    inner.position.y = -0.02;
     inner.receiveShadow = true;
     boardRoot.add(inner);
 
@@ -336,14 +336,17 @@
     function showHighlights() {
       clearHighlights();
       if (selected) {
-        const gold = new THREE.Mesh(glowGeo, new THREE.MeshBasicMaterial({ color: 0xf2c14e, transparent: true, opacity: 0.72 }));
+        const gold = new THREE.Mesh(glowGeo, new THREE.MeshBasicMaterial({ color: 0xf4d35e, transparent: true, opacity: 0.55 }));
         gold.position.set(selected.c - 3.5, 0.08, selected.r - 3.5);
         highlightGroup.add(gold);
       }
       legal.forEach(m => {
-        const green = new THREE.Mesh(glowGeo, new THREE.MeshBasicMaterial({ color: 0x5eea9a, transparent: true, opacity: 0.55 }));
-        green.position.set(m.c - 3.5, 0.08, m.r - 3.5);
-        highlightGroup.add(green);
+        const marker = new THREE.Mesh(
+          new THREE.CylinderGeometry(0.14, 0.14, 0.03, 24),
+          new THREE.MeshBasicMaterial({ color: 0x2a3324, transparent: true, opacity: 0.42 })
+        );
+        marker.position.set(m.c - 3.5, 0.1, m.r - 3.5);
+        highlightGroup.add(marker);
       });
     }
 
